@@ -1,24 +1,57 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator,
+} from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
+import exercises from '../../assets/data/exercises.json';
 import { Stack } from 'expo-router';
 import { useState } from 'react';
-import exercises from '../../assets/data/exercises.json';
+import { gql } from 'graphql-request';
+import { useQuery } from '@tanstack/react-query';
+import graphqlClient from '../graphqlClient';
 import NewSetInput from '../components/NewSetInput';
 import SetsList from '../components/SetsList';
-//import ProgressGraph from '../components/ProgressGraph';
+import ProgressGraph from '../components/ProgressGraph';
 
+const exerciseQuery = gql`
+  query exercises($name: String) {
+    exercises(name: $name) {
+      name
+      muscle
+      instructions
+      equipment
+    }
+  }
+`;
 
-const ExerciseDetailsSCreen = () => {
+export default function ExerciseDetailsScreen() {
   const { name } = useLocalSearchParams();
-  const exercise = exercises[0];
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['exercises', name],
+    queryFn: () => graphqlClient.request(exerciseQuery, { name }),
+  });
+
+  const [isInstructionExpanded, setIsInstructionExpanded] = useState(false);
+
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+
+  if (error) {
+    return <Text>Failed to fetch data</Text>;
+  }
+
+  const exercise = data.exercises[0];
 
   if (!exercise) {
     return <Text>Exercise not found</Text>;
   }
 
   return (
-     <View style={styles.container}>
+    <View style={styles.container}>
       <Stack.Screen options={{ title: exercise.name }} />
 
       <SetsList
@@ -54,10 +87,8 @@ const ExerciseDetailsSCreen = () => {
         )}
       />
     </View>
-  )
+  );
 }
-
-export default ExerciseDetailsSCreen
 
 const styles = StyleSheet.create({
   container: {

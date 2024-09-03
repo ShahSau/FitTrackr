@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { Link } from 'expo-router';
 
 export default function ExerciseListItem({ item }) {
-
   return (
     <Link href={`/${item.name}`} asChild>
       <Pressable style={styles.exerciseContainer}>
