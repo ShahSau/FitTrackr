@@ -21,6 +21,9 @@ const TabLayout =()=> {
         name="index"
         options={{
           title: 'Home',
+          tabBarStyle: {
+            display: 'none',
+          },
           tabBarIcon: ({ focused}) => (
             <TabBarIcon name="home" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
           ),
