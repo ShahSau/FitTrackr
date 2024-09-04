@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const analytics = () => {
+const Analytics = () => {
   return (
     <View>
-      <Text>analytics</Text>
+      <Text>A</Text>
     </View>
   )
 }
 
-export default analytics
+export default Analytics
 
 const styles = StyleSheet.create({})

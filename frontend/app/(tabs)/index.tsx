@@ -3,23 +3,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 //import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
-import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, View, Text, TouchableOpacity,FlatList } from 'react-native';
 import Animated,{ SlideInLeft, SlideInRight } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 
-
-
-const sliderImages =[
-  require('../../assets/images/slider/gym1.jpg'),
-  require('../../assets/images/slider/gym2.jpg'),
-  require('../../assets/images/slider/gym3.jpg'),
-  require('../../assets/images/slider/gym4.jpg'),
-  require('../../assets/images/slider/gym5.jpg'),
-  require('../../assets/images/slider/gym6.jpg'),
-  require('../../assets/images/slider/gym7.jpg'),
-]
+import BodyParts from '../components/BodyParts';
 
 const HomeScreen =() => {
   //const router = useRouter();
@@ -95,16 +85,12 @@ const HomeScreen =() => {
         </View>
       </View>
 
+      {/*TODO  */}
       {/*/*Image slider */}
-      <View>
-        {/* <FlatList
-          data={sliderImages}
-          renderItem={({item, index}) => <ImageSlider item={item} index={index} />}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          /> */}
-      </View>
       
+      <View className='flex-1'>
+        <BodyParts />
+      </View>
 
     </SafeAreaView>
   );
