@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, {useState} from 'react';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 import { theme } from '@/theme';
 
@@ -12,22 +12,32 @@ function TabBarIcon(props: {
 
 const TabLayout =()=> {
 
+  const [authenticated, setAuthenticated] = useState(true);
   return (
     <Tabs
       screenOptions={{
-        headerShown: false,
+        headerShown: authenticated ? true : false,
       }}>
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
+          //these commented out styles need to be check once authentication with state is implemented
+          // headerTitleStyle: {
+          //   display: 'none',
+          // },
+          
           tabBarStyle: {
-            display: 'none',
+            display: authenticated ? 'flex' : 'none',
           },
-          tabBarIcon: ({ focused}) => (
-            <TabBarIcon name="home" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
+          // tabBarIconStyle: {
+          //   display: 'none',
+          // },
+           tabBarIcon: ({ focused}) => (
+             <TabBarIcon name="home" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
           ),
-        }}
+      }}
+    
       />
 
       <Tabs.Screen
