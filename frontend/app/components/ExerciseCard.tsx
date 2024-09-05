@@ -2,12 +2,12 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Image } from 'expo-image'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 
 const ExerciseCard = ({item,index,router}:{item:any, router:any, index:number}) => {
   return (
-    <View>
+    <Animated.View entering={FadeInDown.duration(400).delay(index*200).springify()}>
       <TouchableOpacity
         className='flex py-3 space-y-2'
         onPress={()=>router.push({
@@ -38,7 +38,7 @@ const ExerciseCard = ({item,index,router}:{item:any, router:any, index:number}) 
                 }
             </Text>
       </TouchableOpacity>
-    </View>
+    </Animated.View>
   )
 }
 

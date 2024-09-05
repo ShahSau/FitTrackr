@@ -12,11 +12,11 @@ function TabBarIcon(props: {
 
 const TabLayout =()=> {
 
-  const [authenticated, setAuthenticated] = useState(true);
+  const [authenticated, setAuthenticated] = useState(true); //this should be set to false when authentication is implemented
   return (
     <Tabs
       screenOptions={{
-        headerShown: authenticated ? true : false,
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="index"

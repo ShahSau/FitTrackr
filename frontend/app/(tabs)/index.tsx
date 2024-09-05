@@ -58,18 +58,19 @@ const HomeScreen =() => {
             style={{fontSize:hp(4.5)}}
             className='font-bold trackin text-neutral-700'
           >
-            READY TO
-          </Text>
-          <Text 
-            style={{fontSize:hp(4.5)}}
-            className='font-bold trackin text-rose-500'
-          >
-            Workout
+            READY TO {""}
+          
+            <Text 
+              style={{fontSize:hp(4.5)}}
+              className='font-bold trackin text-rose-500'
+            >
+              Workout
+            </Text>
           </Text>
         </View>
 
         {/*/* */}
-        <View className='flex justify-center items-center space-y-2'>
+        {/* <View className='flex justify-center items-center space-y-2'>
           <Image source={require('../../assets/images/avatar.jpg')} 
             style={{height:hp(8), width:hp(8)}}
             className='rounded-full'
@@ -80,11 +81,9 @@ const HomeScreen =() => {
           >
             <Ionicons name="notifications" size={hp(3)} color="gray" />
           </View>
-        </View>
+        </View> */}
       </View>
 
-      {/*TODO  */}
-      {/*/*Image slider */}
       
       <View className='flex-1'>
         <BodyParts />
@@ -95,12 +94,7 @@ const HomeScreen =() => {
 }
 
 const styles = StyleSheet.create({
-  img:{
-    height:'70%',
-    width:'100%',
-
-
-  }
+  
 });
 
 

@@ -2,10 +2,11 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
+import Animated, { FadeInDown } from 'react-native-reanimated';
 
 const TargetPartCard = ({item,index, router}:{item:any, index:number, router:any})  => {
     return (
-        <View>
+        <Animated.View entering={FadeInDown.duration(400).delay(index*200).springify()}>
           <TouchableOpacity
             style={{width:wp(44), height:hp(40)}}
             className='flex justify-end p-4 mb-4'
@@ -36,7 +37,7 @@ const TargetPartCard = ({item,index, router}:{item:any, index:number, router:any
     
           </TouchableOpacity>
     
-        </View>
+        </Animated.View>
       )
 }
 

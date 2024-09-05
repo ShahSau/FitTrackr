@@ -21,7 +21,6 @@ const Exercises = () => {
       try {
         const res = await getExercisesByBodyPart(name)
         setExercises(res)
-        console.log(res)
       } catch (error) {
         console.log(error)
       }
@@ -38,7 +37,7 @@ const Exercises = () => {
           onPress={()=>router.back()}
           className='absolute mx-2 mt-2 rounded-full left-0'
         >
-          <Ionicons name="arrow-back" size={hp(4.5)} color="#F43F5E" />
+          <Ionicons name="arrow-back-circle" size={hp(4.5)} color="#F43F5E" />
         </TouchableOpacity>
         {/*exercies*/}
         <View className='mx-4 space-y-3 mt-4'>
