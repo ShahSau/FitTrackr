@@ -35,8 +35,10 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
         <Stack.Screen name="exercises"  options={{presentation:'fullScreenModal'}} />
+        <Stack.Screen name="workout"  options={{presentation:'fullScreenModal'}} />
         <Stack.Screen name="exercisestarget"  options={{presentation:'modal'}} />
         <Stack.Screen name="exercisesdetails"  options={{presentation:'modal'}} />
+        <Stack.Screen name="fitscreen"  options={{presentation:'modal'}} />
       </Stack>
     // </ThemeProvider>
   );

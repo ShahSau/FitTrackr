@@ -58,13 +58,13 @@ const HomeScreen =() => {
             style={{fontSize:hp(4.5)}}
             className='font-bold trackin text-neutral-700'
           >
-            READY TO {""}
+            Unlock the Science {""}
           
             <Text 
               style={{fontSize:hp(4.5)}}
               className='font-bold trackin text-rose-500'
             >
-              Workout
+              of Fitness
             </Text>
           </Text>
         </View>
