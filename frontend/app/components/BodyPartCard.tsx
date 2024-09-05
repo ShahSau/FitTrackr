@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 
 const BodyPartCard = ({item,index, router}:{item:any, index:number, router:any}) => {
-    console.log(item,"FFF")
+
   return (
     <View>
       <TouchableOpacity

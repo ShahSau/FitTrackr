@@ -31,7 +31,8 @@ export default function RootLayout() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
-        {/* <Stack.Screen name="exercises"  options={{presentation:'fullScreenModal'}} /> */}
+        <Stack.Screen name="exercises"  options={{presentation:'fullScreenModal'}} />
+        <Stack.Screen name="exercisesdetails"  options={{presentation:'modal'}} />
       </Stack>
     // </ThemeProvider>
   );

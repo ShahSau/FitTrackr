@@ -4,14 +4,24 @@ import { Image } from 'expo-image'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
+
 const ExerciseCard = ({item,index,router}:{item:any, router:any, index:number}) => {
   return (
     <View>
       <TouchableOpacity
         className='flex py-3 space-y-2'
         onPress={()=>router.push({
-            pathname:'/exercisesDetails/'+item.id,
-            params:{id:item.id, name:item.name, image:item.image}
+            pathname:'/exercisesdetails/',
+            params:{
+                bodyPart:item.bodyPart,
+                equipment:item.equipment,
+                gifUrl:item.gifUrl,
+                id:item.id,
+                instructions:item.instructions,
+                name:item.name,
+                secondaryMuscles:item.secondaryMuscles,
+                target:item.target
+            }
         })}
       >
             <View className='shadow rounded-[25px] bg-gray-200'>
