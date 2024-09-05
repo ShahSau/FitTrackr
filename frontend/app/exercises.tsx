@@ -10,8 +10,8 @@ import Ionicons  from '@expo/vector-icons/Ionicons';
 const Exercises = () => {
   const [exercises, setExercises] = useState<any>([])
   const router = useRouter()
-    const params = useLocalSearchParams()
-    const {id, name,image} = params
+  const params = useLocalSearchParams()
+  const {id, name,image} = params
 
     useEffect(() => {
       if(name) getExercises(name)

@@ -17,13 +17,13 @@ const Target = () => {
             style={{fontSize:hp(4.5)}}
             className='font-bold trackin text-neutral-700'
           >
-            READY TO {""}
+            Guide to {""}
           
             <Text 
                 style={{fontSize:hp(4.5)}}
                 className='font-bold trackin text-rose-500'
             >
-                Workout
+                Smarter Workout
             </Text>
           </Text>
         </View>
