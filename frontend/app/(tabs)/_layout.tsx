@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import React from 'react';
+import React, {useState} from 'react';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 import { theme } from '@/theme';
 
@@ -12,6 +12,7 @@ function TabBarIcon(props: {
 
 const TabLayout =()=> {
 
+  const [authenticated, setAuthenticated] = useState(true); //this should be set to false when authentication is implemented
   return (
     <Tabs
       screenOptions={{
@@ -21,8 +22,28 @@ const TabLayout =()=> {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ focused}) => (
-            <TabBarIcon name="home" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
+          //these commented out styles need to be check once authentication with state is implemented
+          // headerTitleStyle: {
+          //   display: 'none',
+          // },
+          
+          tabBarStyle: {
+            display: authenticated ? 'flex' : 'none',
+          },
+          // tabBarIconStyle: {
+          //   display: 'none',
+          // },
+           tabBarIcon: ({ focused}) => (
+             <TabBarIcon name="home" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
+          ),
+      }}
+      />
+      <Tabs.Screen
+        name="target"
+        options={{
+          title: 'Target',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon name="accessibility-sharp" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
           ),
         }}
       />
@@ -46,6 +67,15 @@ const TabLayout =()=> {
         }}
       />
       <Tabs.Screen
+        name="analytics"
+        options={{
+          title: 'Analytics',
+          tabBarIcon: ({  focused }) => (
+            <TabBarIcon name="analytics"  color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
@@ -54,15 +84,7 @@ const TabLayout =()=> {
           ),
         }}
       />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
+      
     </Tabs>
   );
 }
