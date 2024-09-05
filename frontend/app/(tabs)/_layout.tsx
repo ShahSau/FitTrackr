@@ -66,15 +66,7 @@ const TabLayout =()=> {
           ),
         }}
       />
-      <Tabs.Screen
-        name="analytics"
-        options={{
-          title: 'Analytics',
-          tabBarIcon: ({  focused }) => (
-            <TabBarIcon name="analytics"  color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
-          ),
-        }}
-      />
+      
       <Tabs.Screen
         name="profile"
         options={{
