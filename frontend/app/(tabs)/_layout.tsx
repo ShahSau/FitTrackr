@@ -37,7 +37,15 @@ const TabLayout =()=> {
              <TabBarIcon name="home" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
           ),
       }}
-    
+      />
+      <Tabs.Screen
+        name="target"
+        options={{
+          title: 'Target',
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon name="accessibility-sharp" color={focused ? theme['color-primary-400'] : theme['color-primary-200'] } />
+          ),
+        }}
       />
 
       <Tabs.Screen
@@ -76,15 +84,7 @@ const TabLayout =()=> {
           ),
         }}
       />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
+      
     </Tabs>
   );
 }

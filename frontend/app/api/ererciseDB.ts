@@ -24,3 +24,8 @@ export const getExercisesByBodyPart = async (bodyPart:string) => {
     const data = await apiCall(`https://${baseUrl}/exercises/bodyPart/${bodyPart}`, {})
     return data
 }
+
+export const getExerciseByTarget = async (target:string) => {
+    const data = await apiCall(`https://${baseUrl}/exercises/target/${target}`, {})
+    return data
+}

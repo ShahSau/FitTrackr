@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Platform, ScrollView } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Platform, ScrollView, SafeAreaView } from 'react-native'
 import React, {useState} from 'react'
 import {useLocalSearchParams, useRouter} from 'expo-router'
 import { Image } from 'expo-image'
@@ -12,7 +12,7 @@ const Exercisesdetails = () => {
     const {bodyPart, equipment, gifUrl, id, instructions, name, secondaryMuscles, target} = params
 
   return (
-    <View className='flex flex-1'>
+    <SafeAreaView className='flex flex-1 mt-10'>
       <View className='shadow-md bg-netural-200 rounded-b-[40px]'>
         <Image
             source={{uri:gifUrl}}
@@ -22,12 +22,12 @@ const Exercisesdetails = () => {
         />
       </View>
 
-      {Platform.OS == 'ios' && <TouchableOpacity
+      <TouchableOpacity
         onPress={()=>router.back()}
         className='absolute mx-2 mt-2 rounded-full right-0'
       >
         <Ionicons name="close-circle" size={hp(4.5)} color="#F43F5E" />
-      </TouchableOpacity>}
+      </TouchableOpacity>
 
       {/*details*/}
       <ScrollView
@@ -71,7 +71,7 @@ const Exercisesdetails = () => {
             ))}
             
         </ScrollView>
-    </View>
+    </SafeAreaView>
   )
 }
 

@@ -1,13 +1,13 @@
-import { StyleSheet, Text, View, StatusBar, Image, Platform, TouchableOpacity, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, Platform, TouchableOpacity,SafeAreaView } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import {useLocalSearchParams, useRouter} from 'expo-router'
-import {getExercisesByBodyPart} from './api/ererciseDB'
+import {getExerciseByTarget} from './api/ererciseDB'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import ExercisesList from './components/ExerciseList'
 import { ScrollView } from 'react-native-virtualized-view';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 
-const Exercises = () => {
+const ExercisesTarget = () => {
   const [exercises, setExercises] = useState<any>([])
   const router = useRouter()
     const params = useLocalSearchParams()
@@ -19,7 +19,7 @@ const Exercises = () => {
 
     const getExercises = async (name: any) => {
       try {
-        const res = await getExercisesByBodyPart(name)
+        const res = await getExerciseByTarget(name)
         setExercises(res)
         console.log(res)
       } catch (error) {
@@ -50,10 +50,10 @@ const Exercises = () => {
             </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+  </SafeAreaView>
   )
 }
 
-export default Exercises
+export default ExercisesTarget
 
 const styles = StyleSheet.create({})

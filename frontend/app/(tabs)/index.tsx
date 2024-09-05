@@ -1,4 +1,3 @@
-import { theme } from '@/theme';
 import { LinearGradient } from 'expo-linear-gradient';
 //import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
@@ -8,7 +7,6 @@ import Animated,{ SlideInLeft, SlideInRight } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons  from '@expo/vector-icons/Ionicons';
-
 import BodyParts from '../components/BodyParts';
 
 const HomeScreen =() => {
