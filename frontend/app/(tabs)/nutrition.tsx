@@ -5,8 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 import { ScrollView } from 'react-native-virtualized-view';
+import { useRouter } from 'expo-router'
 
 const Nutrition = () => {
+  const router = useRouter();
   return (
     <SafeAreaView className='flex-1 flex mt-10' edges={['top']}>
       <ScrollView>
@@ -63,7 +65,10 @@ const Nutrition = () => {
           <View className='p-4 border-b border-gray-300'>
             <View className='flex-row justify-between mb-2'>
               <Text className='text-lg font-bold'>Breakfast</Text>
-              <TouchableOpacity mode="text" onPress={() => {}} className='mt-2'>
+              <TouchableOpacity mode="text" onPress={() => router.push({
+                pathname:'/addnutrition',
+                params:{name:'Breakfast'}
+              })} className='mt-2'>
                 <Ionicons name="add" size={hp(3)} color="#F43F5E" />
               </TouchableOpacity>
             </View>
@@ -80,7 +85,10 @@ const Nutrition = () => {
           <View className='p-4 border-b border-gray-300'>
             <View className='flex-row justify-between mb-2'>
               <Text className='text-lg font-bold'>Lunch</Text>
-              <TouchableOpacity mode="text" onPress={() => {}} className='mt-2'>
+              <TouchableOpacity mode="text" onPress={() => router.push({
+                pathname:'/addnutrition',
+                params:{name:'Lunch'}
+              })} className='mt-2'>
                 <Ionicons name="add" size={hp(3)} color="#F43F5E" />
               </TouchableOpacity>
             </View>
@@ -90,7 +98,10 @@ const Nutrition = () => {
           <View className='p-4 border-b border-gray-300'>
             <View className='flex-row justify-between mb-2'>
               <Text className='text-lg font-bold'>Dinner</Text>
-              <TouchableOpacity mode="text" onPress={() => {}} className='mt-2'>
+              <TouchableOpacity mode="text" onPress={() => router.push({
+                pathname:'/addnutrition',
+                params:{name:'Dinner'}
+              })} className='mt-2'>
                 <Ionicons name="add" size={hp(3)} color="#F43F5E" />
               </TouchableOpacity>
             </View>
@@ -101,7 +112,10 @@ const Nutrition = () => {
           <View className='p-4 '>
             <View className='flex-row justify-between mb-2'>
               <Text className='text-lg font-bold'>Snacks</Text>
-              <TouchableOpacity mode="text" onPress={() => {}} className='mt-2'>
+              <TouchableOpacity mode="text" onPress={() => router.push({
+                pathname:'/addnutrition',
+                params:{name:'Snacks'}
+              })} className='mt-2'>
                 <Ionicons name="add" size={hp(3)} color="#F43F5E" />
               </TouchableOpacity>
             </View>

@@ -39,6 +39,7 @@ export default function RootLayout() {
         <Stack.Screen name="exercisestarget"  options={{presentation:'modal'}} />
         <Stack.Screen name="exercisesdetails"  options={{presentation:'modal'}} />
         <Stack.Screen name="fitscreen"  options={{presentation:'modal'}} />
+        <Stack.Screen name="addnutrition"  options={{presentation:'modal'}} />
       </Stack>
     // </ThemeProvider>
   );
