@@ -8,7 +8,7 @@ import TargetParts from '../components/TargetParts';
 
 const Target = () => {
   return (
-    <SafeAreaView className='flex-1 bg-white flex space-y-5' edges={['top']}>
+    <SafeAreaView className='flex-1 flex space-y-5' edges={['top']}>
       <StatusBar style='dark' />
       {/*/* */}
       <View className=' mx-5'>

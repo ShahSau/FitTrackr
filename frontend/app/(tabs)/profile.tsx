@@ -43,7 +43,7 @@ const Profile = () => {
   };
 
   return (
-    <SafeAreaView className='flex-1 bg-white flex space-y-5' edges={['top']}>
+    <SafeAreaView className='flex-1 flex space-y-5' edges={['top']}>
         <StatusBar style='dark' />
         <ScrollView>
 

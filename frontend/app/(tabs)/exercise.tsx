@@ -7,7 +7,7 @@ import FitnessParts from '../components/FitnessParts';
 
 const Exercise = () => {
   return (
-    <SafeAreaView className='flex-1 bg-white flex space-y-5' edges={['top']}>
+    <SafeAreaView className='flex-1 flex space-y-5' edges={['top']}>
       <StatusBar style='dark' />
       <View className='flex-row justify-between items-center mx-5'>
         <View className='space-y-2'>
