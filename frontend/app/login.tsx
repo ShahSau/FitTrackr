@@ -1,18 +1,20 @@
 import { StyleSheet,View, Text, TextInput, TouchableOpacity, Image , Button } from 'react-native'
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated,{ SlideInLeft, SlideInRight } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useRouter } from 'expo-router';
+import { FitnessContext } from './Context';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
+    const {authenticated, setAuthenticated} = useContext(FitnessContext);
 
     const handleLogin = () => {
-        console.log(email, password,"DDDD");
+        setAuthenticated(true);
         //call backend and add authenticated context to true
         setEmail('');
         setPassword('');
@@ -20,7 +22,7 @@ const Login = () => {
 
   return ( 
     <View className='flex-1 flex justify-end'>
-        <StatusBar style='dark' />
+        <StatusBar style='light' />
         <Image className='h-full w-full absolute' source={require('../assets/images/sign.jpg')} />
         <LinearGradient
           colors={['transparent', '#18181b']}

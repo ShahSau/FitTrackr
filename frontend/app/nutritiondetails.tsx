@@ -29,7 +29,6 @@ const NutritionDetails = () => {
 
             }
             const response = await axios.request(options)
-            console.log(response.data,"9999999")
             return response.data
         } catch (error) {
             console.log(error)
@@ -39,12 +38,11 @@ const NutritionDetails = () => {
 
     const apiCall = async ()=>{
         const data = await fetchData()
-        console.log(data,"DDDD")
         setData(data)
     }
 
     useEffect(() => {
-        console.log("ia jajajaj999")
+
         apiCall()
         
     },[])

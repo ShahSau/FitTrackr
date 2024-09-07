@@ -401,42 +401,54 @@ export const exercises = [
         "https://i.ibb.co/Bty93Yt/chest.webp",
       name: "Chest",
       description: "7x4 CHALLENGE",
-      excersises: [
+      excersises : [
         {
-          id:"20",
-          image:"https://i.pinimg.com/originals/ff/cf/40/ffcf40474f0758dfedebc823f5532aa1.gif",
-          name:"DECLINE PUSH-UPS",
-          sets:9,
-        },
-        {
-          id:"21",
-          image:"https://image.2bstronger.com/article/fitness/the-14-toughest-do-anywhere-workout-moves-56348/1006.gif",
-          name:"HINDU PUSH-UPS",
+          id:"10",
+          image:"https://i.ibb.co/THQ15x6/Dumbbell-Chest-Press.gif",
+          name:"Dumbbell Chest Press",
           sets:10,
         },
         {
-          id:"22",
-          image:"https://thumbs.gfycat.com/TheseRigidBorer-size_restricted.gif",
-          name:"SHOULDER STRETCH",
-          sets:5,
+          id:"11",
+          image:"https://i.ibb.co/ydskVPQ/Diamond-Kicks.gif",
+          name:"Diamond Kicks",
+          sets:10,
         },
         {
-          id:"23",
-          image:"https://thumbs.gfycat.com/AlertAfraidAldabratortoise-max-1mb.gif",
-          name:"COBRA STRETCH",
-          sets:4,
+          id:"12",
+          image:"https://i.ibb.co/j3fnL4D/Dumbbell-Pullover.gif",
+          name:"Dumbbell Pullover",
+          sets:20,
         },
         {
-          id:"25",
-          image:"https://media4.popsugar-assets.com/files/thumbor/BaWEAcCjtJEjiwf3PqJHnZ_S23A/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/08/10/766/n/1922729/1eae2dcf3d395379_PushUpTwist.gif",
-          name:"PUSH-UP & ROTATION",
-          sets:12,
+          id:"13",
+          image:"https://i.ibb.co/r6V48s8/Side-Plank-Rotation.gif",
+          name:"Side Plank Rotation",
+          sets:10,
         },
         {
-          id:"26",
-          image:"https://media3.popsugar-assets.com/files/thumbor/0Xiqpo7pxrKz5CKcRl7XYrKegko/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/02/27/847/n/1922729/1baf9ec0f5ce4ea9_burpee.3.gif",
-          name:"BURPEES",
-          sets:10
+          id:"14",
+          image:"https://i.ibb.co/2yRz4Kf/Lunge-Back-Kick.gif",
+          name:"Lunge Back Kick",
+          sets:14,
+        },
+        {
+          id:"15",
+          image:"https://i.ibb.co/LRYwwmb/Rope-Climb-Crunches.gif",
+          name:"Rope Climb Crunches",
+          sets:14,
+        },
+        {
+          id:"16",
+          image:"https://i.ibb.co/VDJyhLQ/Frog-Bridge.gif",
+          name:"Frog Bridge",
+          sets:14,
+        },
+        {
+          id:"17",
+          image:"https://i.ibb.co/WPzZyr2/Touch-And-Hop.gif",
+          name:"Touch And Hop",
+          sets:14,
         }
       ]
     },
@@ -448,42 +460,61 @@ export const exercises = [
       description: "7x4 CHALLENGE",
       excersises: [
         {
-          id:"20",
-          image:"https://i.pinimg.com/originals/ff/cf/40/ffcf40474f0758dfedebc823f5532aa1.gif",
-          name:"DECLINE PUSH-UPS",
-          sets:9,
-        },
-        {
-          id:"21",
-          image:"https://image.2bstronger.com/article/fitness/the-14-toughest-do-anywhere-workout-moves-56348/1006.gif",
-          name:"HINDU PUSH-UPS",
-          sets:10,
-        },
-        {
-          id:"22",
-          image:"https://thumbs.gfycat.com/TheseRigidBorer-size_restricted.gif",
-          name:"SHOULDER STRETCH",
-          sets:5,
-        },
-        {
-          id:"23",
-          image:"https://thumbs.gfycat.com/AlertAfraidAldabratortoise-max-1mb.gif",
-          name:"COBRA STRETCH",
-          sets:4,
-        },
-        {
-          id:"25",
-          image:"https://media4.popsugar-assets.com/files/thumbor/BaWEAcCjtJEjiwf3PqJHnZ_S23A/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/08/10/766/n/1922729/1eae2dcf3d395379_PushUpTwist.gif",
-          name:"PUSH-UP & ROTATION",
+          id: "00",
+          image:
+            "https://i.ibb.co/r3rHVhB/Ankle-Tap-Push-Ups.gif",
+          name: "Ankle Tap Push Ups",
           sets:12,
         },
         {
-          id:"26",
-          image:"https://media3.popsugar-assets.com/files/thumbor/0Xiqpo7pxrKz5CKcRl7XYrKegko/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/02/27/847/n/1922729/1baf9ec0f5ce4ea9_burpee.3.gif",
-          name:"BURPEES",
-          sets:10
-        }
-      ]
+            id:"01",
+            image:"https://i.ibb.co/mGmLRsQ/Asymmetrical-Push-Up.gif",
+            name:"Asymmetrical PUSH-UPS",
+            sets:10,
+        },
+        {
+            id:"02",
+            image:"https://i.ibb.co/ydskVPQ/Diamond-Kicks.gif",
+            name:"Diamond Kicks",
+            sets:10,
+        },
+        {
+            id:"03",
+            image:"https://i.ibb.co/VLyxvx4/Inchworm.gif",
+            name:"Inchworm",
+            sets:8,
+        },
+        {
+            id:"04",
+            image:"https://i.ibb.co/CtPQmPq/Surrender.gif",
+            name:"Surrender",
+            sets:10,
+        },
+        {
+            id:"05",
+            image:"https://i.ibb.co/xgXtkRZ/Big-Arm-Circles.gif",
+            name:"Big Arm Circles",
+            sets:8,
+        },
+        {
+          id:"06",
+          image:"https://i.ibb.co/0sx1MF1/Triangle-Crunch.gif",
+          name:"Triangle Crunch",
+          sets:10,
+      },
+      {
+          id:"07",
+          image:"https://i.ibb.co/WyXFNNk/Double-Leg-Stretch.gif",
+          name:"Double Leg Stretch",
+          sets:12,
+      },
+      {
+          id:"08",
+          image:"https://i.ibb.co/9yVT6FV/Scissor-Kicks.gif",
+          name:"Scissor Kicks",
+          sets:10,
+      }
+      ],
     },
     {
       id: "7",
@@ -491,42 +522,49 @@ export const exercises = [
         "https://i.ibb.co/StCqXwX/balance.webp",
       name: "Balance",
       description: "7x4 CHALLENGE",
-      excersises: [
+      excersises:[
         {
-          id:"20",
-          image:"https://i.pinimg.com/originals/ff/cf/40/ffcf40474f0758dfedebc823f5532aa1.gif",
-          name:"DECLINE PUSH-UPS",
-          sets:9,
+          id:"70",
+          image:"https://i.ibb.co/vZMPnXn/Deadlift-Upright-Row.gif",
+          name:"Deadlift Upright Row",
+          sets:8,
         },
         {
-          id:"21",
-          image:"https://image.2bstronger.com/article/fitness/the-14-toughest-do-anywhere-workout-moves-56348/1006.gif",
-          name:"HINDU PUSH-UPS",
+          id:"71",
+          image:"https://i.ibb.co/NCsDd55/Lunge-Punch.gif",
+          name:"Lunge Punch",
           sets:10,
         },
         {
-          id:"22",
-          image:"https://thumbs.gfycat.com/TheseRigidBorer-size_restricted.gif",
-          name:"SHOULDER STRETCH",
+          id:"72",
+          image:"https://i.ibb.co/WBDtsZV/Squat-With-Overhead-Tricep.gif",
+          name:"Squat With Overhead Tricep",
+          sets:10,
+        },
+        {
+          id:"73",
+          image:"https://i.ibb.co/KyGp3nR/Step-Up-Crossover.gif",
+          name:"Step Up Crossover",
+          sets:10,
+        },
+        {
+          id:"74",
+          image:"https://i.ibb.co/d4kj83q/Wide-Row.gif",
+          name:"Wide Row",
+          sets:11,
+        
+        },
+        {
+          id:"75",
+          image:"https://i.ibb.co/0sH6GYr/Dumbbell-Bent-Over-Row.gif",
+          name:"Dumbbell Bent Over Row",
           sets:5,
         },
         {
-          id:"23",
-          image:"https://thumbs.gfycat.com/AlertAfraidAldabratortoise-max-1mb.gif",
-          name:"COBRA STRETCH",
-          sets:4,
-        },
-        {
-          id:"25",
-          image:"https://media4.popsugar-assets.com/files/thumbor/BaWEAcCjtJEjiwf3PqJHnZ_S23A/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/08/10/766/n/1922729/1eae2dcf3d395379_PushUpTwist.gif",
-          name:"PUSH-UP & ROTATION",
-          sets:12,
-        },
-        {
-          id:"26",
-          image:"https://media3.popsugar-assets.com/files/thumbor/0Xiqpo7pxrKz5CKcRl7XYrKegko/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/02/27/847/n/1922729/1baf9ec0f5ce4ea9_burpee.3.gif",
-          name:"BURPEES",
-          sets:10
+          id:"76",
+          image:"https://i.ibb.co/QF3cmRJ/Half-Squat-Jab-Cross.gif",
+          name:"Half Squat Jab Cross",
+          sets:8,
         }
       ]
     },
@@ -539,38 +577,50 @@ export const exercises = [
       excersises: [
         {
           id:"20",
-          image:"https://i.pinimg.com/originals/ff/cf/40/ffcf40474f0758dfedebc823f5532aa1.gif",
-          name:"DECLINE PUSH-UPS",
+          image:"https://i.ibb.co/qYMGF2D/Plie-Squat-Scoop-Up.gif",
+          name:"Plie Squat Scoop Up",
           sets:9,
         },
         {
           id:"21",
-          image:"https://image.2bstronger.com/article/fitness/the-14-toughest-do-anywhere-workout-moves-56348/1006.gif",
-          name:"HINDU PUSH-UPS",
+          image:"https://i.ibb.co/qBsN62Z/Gate-Swings.gif",
+          name:"Gate Swings",
           sets:10,
         },
         {
           id:"22",
-          image:"https://thumbs.gfycat.com/TheseRigidBorer-size_restricted.gif",
-          name:"SHOULDER STRETCH",
+          image:"https://i.ibb.co/BT7bf1z/Deadlift-Upright-Row.gif",
+          name:"Deadlift Upright Row",
           sets:5,
         },
         {
           id:"23",
-          image:"https://thumbs.gfycat.com/AlertAfraidAldabratortoise-max-1mb.gif",
-          name:"COBRA STRETCH",
+          image:"https://i.ibb.co/7yVj6rP/Squat-Curl.gif",
+          name:"Squat Curl",
           sets:4,
         },
         {
           id:"25",
-          image:"https://media4.popsugar-assets.com/files/thumbor/BaWEAcCjtJEjiwf3PqJHnZ_S23A/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/08/10/766/n/1922729/1eae2dcf3d395379_PushUpTwist.gif",
-          name:"PUSH-UP & ROTATION",
+          image:"https://i.ibb.co/yhCFGqZ/Surfer-Burpees.gif",
+          name:"Surfer Burpees",
           sets:12,
         },
         {
           id:"26",
-          image:"https://media3.popsugar-assets.com/files/thumbor/0Xiqpo7pxrKz5CKcRl7XYrKegko/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/02/27/847/n/1922729/1baf9ec0f5ce4ea9_burpee.3.gif",
-          name:"BURPEES",
+          image:"https://i.ibb.co/n08vYk6/Diamond-Kicks.gif",
+          name:"Diamond Kicks",
+          sets:10
+        },
+        {
+          id:"27",
+          image:"https://i.ibb.co/TqsDgXG/Dead-Bug.gif",
+          name:"Dead Bug",
+          sets:12,
+        },
+        {
+          id:"28",
+          image:"https://i.ibb.co/KrTsC4z/Straight-Leg-Raise.gif",
+          name:"Straight Leg Raise",
           sets:10
         }
       ]
@@ -584,38 +634,50 @@ export const exercises = [
       excersises: [
         {
           id:"20",
-          image:"https://i.pinimg.com/originals/ff/cf/40/ffcf40474f0758dfedebc823f5532aa1.gif",
-          name:"DECLINE PUSH-UPS",
+          image:"https://i.ibb.co/HPXXWTR/Plank-Leg-Lifts.gif",
+          name:"Plank Leg Lifts",
           sets:9,
         },
         {
           id:"21",
-          image:"https://image.2bstronger.com/article/fitness/the-14-toughest-do-anywhere-workout-moves-56348/1006.gif",
-          name:"HINDU PUSH-UPS",
+          image:"https://i.ibb.co/Cvmp9gb/Jump-Start.gif",
+          name:"Jump Start",
           sets:10,
         },
         {
           id:"22",
-          image:"https://thumbs.gfycat.com/TheseRigidBorer-size_restricted.gif",
-          name:"SHOULDER STRETCH",
+          image:"https://i.ibb.co/2Zd7PbZ/Side-Plank-Front-Kick.gif",
+          name:"Side Plank Front Kick",
           sets:5,
         },
         {
           id:"23",
-          image:"https://thumbs.gfycat.com/AlertAfraidAldabratortoise-max-1mb.gif",
-          name:"COBRA STRETCH",
+          image:"https://i.ibb.co/ChhVB0F/Romanian-Deadlift.gif",
+          name:"Romanian Deadlift",
           sets:4,
         },
         {
           id:"25",
-          image:"https://media4.popsugar-assets.com/files/thumbor/BaWEAcCjtJEjiwf3PqJHnZ_S23A/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2016/08/10/766/n/1922729/1eae2dcf3d395379_PushUpTwist.gif",
-          name:"PUSH-UP & ROTATION",
+          image:"https://i.ibb.co/vJMzMyX/Curtsy-Lunge-Side-Kick.gif",
+          name:"Curtsy Lunge Side Kick",
           sets:12,
         },
         {
           id:"26",
-          image:"https://media3.popsugar-assets.com/files/thumbor/0Xiqpo7pxrKz5CKcRl7XYrKegko/fit-in/1024x1024/filters:format_auto-!!-:strip_icc-!!-/2014/02/27/847/n/1922729/1baf9ec0f5ce4ea9_burpee.3.gif",
-          name:"BURPEES",
+          image:"https://i.ibb.co/xmHCR0x/Fingertip-To-Toe-Jacks.gif",
+          name:"Fingertip To Toe Jacks",
+          sets:10
+        },
+        {
+          id:"27",
+          image:"https://i.ibb.co/j3fnL4D/Dumbbell-Pullover.gif",
+          name:"Dumbbell Pullover",
+          sets:10
+        },
+        {
+          id:"28",
+          image:"https://i.ibb.co/DQT6vSP/Pike-Push-Up.gif",
+          name:"Pike Push Up",
           sets:10
         }
       ]

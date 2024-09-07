@@ -13,17 +13,17 @@ const Register = () => {
     const router = useRouter();
 
     const handleRegistration = () => {
-        console.log(email, password,fullName,"DDDD");
+        
         //call backend and add authenticated context to true
         setEmail('');
         setPassword('');
         setFullName('');
-        router.push('/login');
+        router.push('/')
     }
 
   return ( 
     <View className='flex-1 flex justify-end'>
-        <StatusBar style='dark' />
+        <StatusBar style='light' />
         <Image className='h-full w-full absolute' source={require('../assets/images/register.jpg')} />
         <LinearGradient
           colors={['transparent', '#18181b']}

@@ -6,6 +6,7 @@ import React,{ useEffect } from 'react';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { FitnessContextProvider } from './Context';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -28,6 +29,7 @@ export default function RootLayout() {
 
   return (
     // <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+    <FitnessContextProvider>
       <Stack
         // initialRouteName="(tabs)"
         screenOptions={{ headerShown: false }}
@@ -44,6 +46,6 @@ export default function RootLayout() {
         <Stack.Screen name="login"  options={{presentation:'fullScreenModal'}} />
         <Stack.Screen name="register"  options={{presentation:'fullScreenModal'}} />
       </Stack>
-    // </ThemeProvider>
+    </FitnessContextProvider>
   );
 }

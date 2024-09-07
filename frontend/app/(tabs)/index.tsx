@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 //import { useRouter } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import { Image, StyleSheet, View, Text, TouchableOpacity,FlatList } from 'react-native';
 import Animated,{ SlideInLeft, SlideInRight } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -10,17 +10,19 @@ import Ionicons  from '@expo/vector-icons/Ionicons';
 import BodyParts from '../components/BodyParts';
 import Login from '../login';
 import { useRouter } from 'expo-router';
+import { FitnessContext } from '../Context';
 
 
 const HomeScreen =() => {
   const router = useRouter();
-  const [authenticated, setAuthenticated] = useState(false);
-  const [initialScreen, setInitialScreen] = useState(false);
+  // const [authenticated, setAuthenticated] = useState(false);
+  // const [initialScreen, setInitialScreen] = useState(false);
+  const {authenticated, setAuthenticated, initialScreen, setInitialScreen} = useContext(FitnessContext);
 
   if (!authenticated && !initialScreen) {
   return (
       <View className='flex-1 flex justify-end'>
-        <StatusBar style='dark' />
+        <StatusBar style='light' />
         <Image className='h-full w-full absolute' source={require('../../assets/images/initialImage.jpg')} />
         <LinearGradient
           colors={['transparent', '#18181b']}
@@ -44,7 +46,6 @@ const HomeScreen =() => {
               onPress={() => 
                 {
                   setInitialScreen(true)
-                  setAuthenticated(true)
                 }
               }
             >

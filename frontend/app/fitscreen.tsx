@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, SafeAreaView, Image,Pressable  } from 'react-native'
 import React, {useState} from 'react'
 import { useRouter } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
 
 const FitScreen = () => {
@@ -47,7 +48,8 @@ const FitScreen = () => {
     const current = excersises[index]
     const router = useRouter()
   return (
-    <SafeAreaView>
+    <SafeAreaView className='mt-10'>
+      <StatusBar style='dark' />
       <Image
         style={{ width: "100%", height: 370 }}
         source={{ uri: current.image }}
@@ -84,6 +86,15 @@ const FitScreen = () => {
         onPress={()=>router.push({
             pathname:'/workout',
         })}
+        style={{
+          backgroundColor: "green",
+          marginLeft: "auto",
+          marginRight: "auto",
+          marginTop: 30,
+          borderRadius: 20,
+          padding: 10,
+          width: 150,
+        }}
         >
           <Text
             style={{
@@ -93,7 +104,7 @@ const FitScreen = () => {
               color: "white",
             }}
           >
-            DONE
+            End
           </Text>
         </Pressable>
       ) : (

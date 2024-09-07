@@ -1,7 +1,8 @@
 import { Tabs } from 'expo-router';
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 import { theme } from '@/theme';
+import { FitnessContext } from '../Context';
 
 function TabBarIcon(props: {
   name: React.ComponentProps<typeof Ionicons>['name'];
@@ -11,8 +12,8 @@ function TabBarIcon(props: {
 }
 
 const TabLayout =()=> {
-
-  const [authenticated, setAuthenticated] = useState(true); //this should be set to false when authentication is implemented
+  const {authenticated, setAuthenticated} = useContext(FitnessContext);
+ //this should be set to false when authentication is implemented
   return (
     <Tabs
       screenOptions={{

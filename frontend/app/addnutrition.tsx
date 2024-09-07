@@ -44,13 +44,11 @@ const Addnutrition = () => {
 
     const searchApi = async () => {
         const data = await apiCall(`${base_url}`, {})
-        console.log(data.hits)
         setRecipies(data.hits)
     }
 
     useEffect(() => {
         searchApi()
-        console.log(search)
     }
     ,[search])
 
