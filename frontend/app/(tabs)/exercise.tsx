@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import FitnessParts from '../components/FitnessParts';
-import CircularCountdownTimer from '../components/Timer';
+
 
 const Exercise = () => {
   return (
