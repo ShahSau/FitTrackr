@@ -41,6 +41,8 @@ export default function RootLayout() {
         <Stack.Screen name="fitscreen"  options={{presentation:'modal'}} />
         <Stack.Screen name="addnutrition"  options={{presentation:'fullScreenModal'}} />
         <Stack.Screen name="nutritiondetails"  options={{presentation:'modal'}} />
+        <Stack.Screen name="login"  options={{presentation:'fullScreenModal'}} />
+        <Stack.Screen name="register"  options={{presentation:'fullScreenModal'}} />
       </Stack>
     // </ThemeProvider>
   );

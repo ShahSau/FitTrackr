@@ -8,12 +8,16 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 import BodyParts from '../components/BodyParts';
+import Login from '../login';
+import { useRouter } from 'expo-router';
+
 
 const HomeScreen =() => {
-  //const router = useRouter();
+  const router = useRouter();
   const [authenticated, setAuthenticated] = useState(false);
+  const [initialScreen, setInitialScreen] = useState(false);
 
-  if (!authenticated) {
+  if (!authenticated && !initialScreen) {
   return (
       <View className='flex-1 flex justify-end'>
         <StatusBar style='dark' />
@@ -37,7 +41,7 @@ const HomeScreen =() => {
             <TouchableOpacity
               style={{height:hp(7), width:wp(80)}}
               className='bg-rose-500 rounded-full flex items-center justify-center mx-auto border-[2px] border-neutral-200'
-              onPress={() => setAuthenticated(true)}
+              onPress={() => setInitialScreen(true)}
             >
               <Text className='text-gray-200 font-bold tracking-widest'>
                 Get Started
@@ -48,6 +52,14 @@ const HomeScreen =() => {
       </View>
   );
   }
+
+
+  if(!authenticated && initialScreen){
+    return (
+      <Login />
+    );
+  }
+  if(authenticated && initialScreen){
   return (
     <SafeAreaView className='flex-1 flex space-y-5' edges={['top']}>
       <StatusBar style='dark' />
@@ -91,6 +103,7 @@ const HomeScreen =() => {
 
     </SafeAreaView>
   );
+  }
 }
 
 const styles = StyleSheet.create({
