@@ -11,7 +11,7 @@ const BodyParts = () => {
     const router = useRouter();
   return (
     <View className='mx-4'>
-      <Text style={{fontSize:hp(3)}} className='font-semibold text-neutral-700'>Exercises</Text>
+      <Text style={{fontSize:hp(3)}} className='font-semibold text-neutral-700'>Workout</Text>
       <FlatList
         data={bodyParts}
         numColumns={2}

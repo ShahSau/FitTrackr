@@ -41,7 +41,12 @@ const HomeScreen =() => {
             <TouchableOpacity
               style={{height:hp(7), width:wp(80)}}
               className='bg-rose-500 rounded-full flex items-center justify-center mx-auto border-[2px] border-neutral-200'
-              onPress={() => setInitialScreen(true)}
+              onPress={() => 
+                {
+                  setInitialScreen(true)
+                  setAuthenticated(true)
+                }
+              }
             >
               <Text className='text-gray-200 font-bold tracking-widest'>
                 Get Started
@@ -59,6 +64,7 @@ const HomeScreen =() => {
       <Login />
     );
   }
+  
   if(authenticated && initialScreen){
   return (
     <SafeAreaView className='flex-1 flex space-y-5' edges={['top']}>
@@ -81,19 +87,6 @@ const HomeScreen =() => {
           </Text>
         </View>
 
-        {/*/* */}
-        {/* <View className='flex justify-center items-center space-y-2'>
-          <Image source={require('../../assets/images/avatar.jpg')} 
-            style={{height:hp(8), width:hp(8)}}
-            className='rounded-full'
-          />
-          <View 
-            className='bg-neutral-200 rounded-full flex justify-center items-center border-[3px] border-neutral-300'
-            style={{height:hp(5), width:hp(5)}}
-          >
-            <Ionicons name="notifications" size={hp(3)} color="gray" />
-          </View>
-        </View> */}
       </View>
 
       

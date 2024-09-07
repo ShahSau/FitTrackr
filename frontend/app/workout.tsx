@@ -17,51 +17,62 @@ const Workout = () => {
     //use this id to call backend to get the details of the workout
     const exercises=[
         {
-            id: "0",
+            id: "4",
             image:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrEM-6gDUO7g1cdrNhBaqk_0nwxy6ILlIqsQ&usqp=CAU",
-            name: "FULL BODY",
+              "https://i.ibb.co/vhFjxkh/core.webp",
+            name: "Core",
             description: "7x4 CHALLENGE",
             excersises: [
               {
-                id: "10",
-                image:
-                  "https://sworkit.com/wp-content/uploads/2020/06/sworkit-jumping-jack.gif",
-                name: "JUMPING JACKS",
+                id:"20",
+                image:"https://i.ibb.co/qYMGF2D/Plie-Squat-Scoop-Up.gif",
+                name:"Plie Squat Scoop Up",
+                sets:9,
+              },
+              {
+                id:"21",
+                image:"https://i.ibb.co/qBsN62Z/Gate-Swings.gif",
+                name:"Gate Swings",
+                sets:10,
+              },
+              {
+                id:"22",
+                image:"https://i.ibb.co/BT7bf1z/Deadlift-Upright-Row.gif",
+                name:"Deadlift Upright Row",
+                sets:5,
+              },
+              {
+                id:"23",
+                image:"https://i.ibb.co/7yVj6rP/Squat-Curl.gif",
+                name:"Squat Curl",
+                sets:4,
+              },
+              {
+                id:"25",
+                image:"https://i.ibb.co/yhCFGqZ/Surfer-Burpees.gif",
+                name:"Surfer Burpees",
                 sets:12,
               },
               {
-                  id:"11",
-                  image:"https://177d01fbswx3jjl1t20gdr8j-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Incline-Push-Up.gif",
-                  name:"INCLINE PUSH-UPS",
-                  sets:10,
+                id:"26",
+                image:"https://i.ibb.co/n08vYk6/Diamond-Kicks.gif",
+                name:"Diamond Kicks",
+                sets:10
               },
               {
-                  id:"12",
-                  image:"https://media.self.com/photos/583c641ca8746f6e65a60c7e/master/w_1600%2Cc_limit/DIAMOND_PUSHUP_MOTIFIED.gif",
-                  name:"INCLINED PUSH-UPS",
-                  sets:10,
+                id:"27",
+                image:"https://i.ibb.co/TqsDgXG/Dead-Bug.gif",
+                name:"Dead Bug",
+                sets:12,
               },
               {
-                  id:"13",
-                  image:"https://cdn.prod.openfit.com/uploads/2020/03/10162714/wide-arm-push-up.gif",
-                  name:"WIDE ARM PUSH-UPS",
-                  sets:12,
-              },
-              {
-                  id:"14",
-                  image:"https://www.yogajournal.com/wp-content/uploads/2021/12/Cobra.gif?width=730",
-                  name:"COBRA STRETCH",
-                  sets:10,
-              },
-              {
-                  id:"15",
-                  image:"https://www.vissco.com/wp-content/uploads/animation/sub/double-knee-to-chest-stretch.gif",
-                  name:"CHEST STRETCH",
-                  sets:10,
+                id:"28",
+                image:"https://i.ibb.co/KrTsC4z/Straight-Leg-Raise.gif",
+                name:"Straight Leg Raise",
+                sets:10
               }
-            ],
-      }
+            ]
+          }
     ]
   return (
     <SafeAreaView className='mt-10'>
