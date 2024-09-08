@@ -6,9 +6,11 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import ExercisesList from './components/ExerciseList'
 import { ScrollView } from 'react-native-virtualized-view';
 import Ionicons  from '@expo/vector-icons/Ionicons';
+import LoadingScreen from './components/LoadingScreen';
 
 const ExercisesTarget = () => {
   const [exercises, setExercises] = useState<any>([])
+  const [loading, setLoading] = useState(true)
   const router = useRouter()
     const params = useLocalSearchParams()
     const {id, name,image} = params
@@ -20,6 +22,7 @@ const ExercisesTarget = () => {
     const getExercises = async (name: any) => {
       try {
         const res = await getExerciseByTarget(name)
+        setLoading(false)
         setExercises(res)
       } catch (error) {
         console.log(error)
@@ -27,7 +30,11 @@ const ExercisesTarget = () => {
     }
   return (
     <SafeAreaView className='mt-10'>
-      <ScrollView>
+      {
+        loading ?
+        <LoadingScreen />
+        :
+        <ScrollView>
         <StatusBar style="light" />
         <Image 
           source={image} style={{width: wp(100), height: hp(45)}} 
@@ -49,6 +56,7 @@ const ExercisesTarget = () => {
             </View>
         </View>
       </ScrollView>
+      }
   </SafeAreaView>
   )
 }

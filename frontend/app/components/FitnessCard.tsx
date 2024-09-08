@@ -12,7 +12,6 @@ const FitnessCard= ({item,index, router}:{item:any, index:number, router:any}) =
         className='items-center justify-center m-2'
         onPress={()=>router.push({
             pathname:'/workout',
-            // params:{id:item.id, name:item.name, image:item.image, description:item.description, excersises:[item.excersises]} 
             params:{id:item.id, name:item.name}
         })}
       >

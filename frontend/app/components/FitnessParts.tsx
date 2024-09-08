@@ -1,17 +1,41 @@
 import { FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native'
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import {exercises} from '../constants/index';
 import { useRouter } from 'expo-router';
 import FitnessCard from './FitnessCard';
+import { getAllexercisesMine } from '../api/ererciseDB';
+import LoadingScreen from './LoadingScreen';
+
 
 const FitnessParts = () => {
     const router = useRouter();
-    const FitnessData = exercises
+    const [exercises, setExercises] = useState<any>([])
+    const [loading, setLoading] = useState(true)
+
+
+    useEffect(() => {
+      getExercises()
+    },[])
+
+    const getExercises = async () => {
+      try {
+        const res = await getAllexercisesMine()
+        setLoading(false)
+        setExercises(res)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
     return (
       <View className='m-2'>
-        <Text style={{fontSize:hp(3)}} className='font-semibold text-neutral-700'>Exercises</Text>
-            <FlatList
+       {
+        loading ?
+        <LoadingScreen />
+        :
+        <>
+          <Text style={{fontSize:hp(3)}} className='font-semibold text-neutral-700'>Exercises</Text>
+          <FlatList
             data={exercises}
             numColumns={1}
             showsVerticalScrollIndicator={false}
@@ -19,7 +43,9 @@ const FitnessParts = () => {
             keyExtractor={(item) => item.name}
             style={{width:wp(100)}}
             renderItem={({item,index})=><FitnessCard item={item} index={index} router={router}/>}
-            />
+          />
+        </>
+       }
       </View>
     )
 }

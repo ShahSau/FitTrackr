@@ -1,5 +1,5 @@
-import { StyleSheet, Text, TouchableOpacity, View, Platform, ScrollView, SafeAreaView } from 'react-native'
-import React, {useState} from 'react'
+import { StyleSheet, Text, TouchableOpacity, View, ScrollView, SafeAreaView } from 'react-native'
+import React from 'react'
 import {useLocalSearchParams, useRouter} from 'expo-router'
 import { Image } from 'expo-image'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -7,10 +7,9 @@ import Ionicons  from '@expo/vector-icons/Ionicons';
 import Animated, { FadeInDown } from 'react-native-reanimated';
 
 const Exercisesdetails = () => {
-    const [exercises, setExercises] = useState<any>([])
     const params:any = useLocalSearchParams()
     const router = useRouter()
-    const {bodyPart, equipment, gifUrl, id, instructions, name, secondaryMuscles, target} = params
+    const { equipment, gifUrl, instructions, name, secondaryMuscles, target} = params
 
   return (
     <SafeAreaView className='flex flex-1 mt-10'>

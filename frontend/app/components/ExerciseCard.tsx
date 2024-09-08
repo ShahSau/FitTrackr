@@ -11,7 +11,7 @@ const ExerciseCard = ({item,index,router}:{item:any, router:any, index:number}) 
       <TouchableOpacity
         className='flex py-3 space-y-2'
         onPress={()=>router.push({
-            pathname:'/exercisesdetails/',
+            pathname:'/exercisesdetails',
             params:{
                 bodyPart:item.bodyPart,
                 equipment:item.equipment,

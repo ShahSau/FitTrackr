@@ -1,52 +1,21 @@
-import { StyleSheet, Text, View, SafeAreaView, Image,Pressable  } from 'react-native'
-import React, {useState} from 'react'
-import { useRouter } from 'expo-router'
+import { StyleSheet, Text, SafeAreaView, Image,Pressable, View  } from 'react-native'
+import React, {useState, useContext, useEffect} from 'react'
 import { StatusBar } from 'expo-status-bar'
+import {useLocalSearchParams, useRouter} from 'expo-router'
+import { FitnessContext } from './Context';
 
 
 const FitScreen = () => {
-    const excersises= [
-        {
-          id: "10",
-          image:
-            "https://sworkit.com/wp-content/uploads/2020/06/sworkit-jumping-jack.gif",
-          name: "JUMPING JACKS",
-          sets:12,
-        },
-        {
-            id:"11",
-            image:"https://177d01fbswx3jjl1t20gdr8j-wpengine.netdna-ssl.com/wp-content/uploads/2019/06/Incline-Push-Up.gif",
-            name:"INCLINE PUSH-UPS",
-            sets:10,
-        },
-        {
-            id:"12",
-            image:"https://media.self.com/photos/583c641ca8746f6e65a60c7e/master/w_1600%2Cc_limit/DIAMOND_PUSHUP_MOTIFIED.gif",
-            name:"INCLINED PUSH-UPS",
-            sets:10,
-        },
-        {
-            id:"13",
-            image:"https://cdn.prod.openfit.com/uploads/2020/03/10162714/wide-arm-push-up.gif",
-            name:"WIDE ARM PUSH-UPS",
-            sets:12,
-        },
-        {
-            id:"14",
-            image:"https://www.yogajournal.com/wp-content/uploads/2021/12/Cobra.gif?width=730",
-            name:"COBRA STRETCH",
-            sets:10,
-        },
-        {
-            id:"15",
-            image:"https://www.vissco.com/wp-content/uploads/animation/sub/double-knee-to-chest-stretch.gif",
-            name:"CHEST STRETCH",
-            sets:10,
-        }
-      ]
-    const [index, setIndex] = useState(0)
-    const current = excersises[index]
-    const router = useRouter()
+  const params = useLocalSearchParams()
+  const {id, name} = params
+  
+  const router = useRouter()
+  const {completed, setCompleted, currentWorkout, setCurrentWorkout} = useContext(FitnessContext);
+
+  const [excersises, setExcersises] = useState(currentWorkout)
+  const [index, setIndex] = useState(0)
+  const current = excersises[index]
+  console.log(excersises.length, "DD", index)
   return (
     <SafeAreaView className='mt-10'>
       <StatusBar style='dark' />
@@ -83,9 +52,13 @@ const FitScreen = () => {
         //   onPress={() => {
         //     navigation.navigate("Home");
         //   }}
-        onPress={()=>router.push({
+        onPress={()=>{
+          router.push({
             pathname:'/workout',
-        })}
+            params:{id:id, name:name}
+        })
+        setCurrentWorkout([])
+      }}
         style={{
           backgroundColor: "green",
           marginLeft: "auto",
@@ -114,7 +87,7 @@ const FitScreen = () => {
             router.push({
                 pathname:'/restscreen',
             })
-            //setCompleted([...completed, current.name]);
+            setCompleted([...completed, current.name]);
             //setWorkout(workout + 1);
             //setMinutes(minutes + 2.5);
             //setCalories(calories + 6.3);
@@ -184,6 +157,7 @@ const FitScreen = () => {
             onPress={() => {
               router.push({
                     pathname:'/workout',
+                    params:{id:id, name:name}
               });
             }}
             style={{
@@ -242,3 +216,9 @@ const FitScreen = () => {
 export default FitScreen
 
 const styles = StyleSheet.create({})
+
+
+
+
+
+[{"_id": "66dcdbae9638210972ead943", "id": "10", "image": "https://i.ibb.co/THQ15x6/Dumbbell-Chest-Press.gif", "name": "Dumbbell Chest Press", "sets": 10}, {"_id": "66dcdbae9638210972ead944", "id": "11", "image": "https://i.ibb.co/ydskVPQ/Diamond-Kicks.gif", "name": "Diamond Kicks", "sets": 10}, {"_id": "66dcdbae9638210972ead945", "id": "12", "image": "https://i.ibb.co/j3fnL4D/Dumbbell-Pullover.gif", "name": "Dumbbell Pullover", "sets": 20}, {"_id": "66dcdbae9638210972ead946", "id": "13", "image": "https://i.ibb.co/r6V48s8/Side-Plank-Rotation.gif", "name": "Side Plank Rotation", "sets": 10}, {"_id": "66dcdbae9638210972ead947", "id": "14", "image": "https://i.ibb.co/2yRz4Kf/Lunge-Back-Kick.gif", "name": "Lunge Back Kick", "sets": 14}, {"_id": "66dcdbae9638210972ead948", "id": "15", "image": "https://i.ibb.co/LRYwwmb/Rope-Climb-Crunches.gif", "name": "Rope Climb Crunches", "sets": 14}, {"_id": "66dcdbae9638210972ead949", "id": "16", "image": "https://i.ibb.co/VDJyhLQ/Frog-Bridge.gif", "name": "Frog Bridge", "sets": 14}, {"_id": "66dcdbae9638210972ead94a", "id": "17", "image": "https://i.ibb.co/WPzZyr2/Touch-And-Hop.gif", "name": "Touch And Hop", "sets": 14}]

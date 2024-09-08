@@ -5,7 +5,7 @@ import userRoutes from './routes/user.js';
 import exercisesRoutes from './routes/exercises.js';
 import nutritionRoutes from './routes/nutrition.js';
 import workoutsRoutes from './routes/workout.js';
-
+import cors from 'cors';
 
 dotenv.config();
 
@@ -16,6 +16,7 @@ const app = express();
 
 // Middleware
 app.use(json());
+app.use(cors());
 
 // Routes
 app.use('/api/users', userRoutes);

@@ -2,7 +2,6 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import {targetMuscles} from '../constants/index';
-import BodyPartCard from './BodyPartCard';
 import { useRouter } from 'expo-router';
 import TargetPartCard from './TargetPartCard';
 

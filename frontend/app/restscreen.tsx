@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "expo-router";
-import restImage from '../assets/images/rest.jpg';
 import rest1 from '../assets/images/rest-1.jpg';
 import rest2 from '../assets/images/rest-2.jpg';
 import rest3 from '../assets/images/rest-3.jpg';

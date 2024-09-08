@@ -9,10 +9,14 @@ interface FitnessContextProviderProps {
 const FitnessContextProvider = ({ children }: any) => {
   const [authenticated, setAuthenticated] = useState(false);
   const [initialScreen, setInitialScreen] = useState(false);
+  const  [completed, setCompleted] = useState<any>([])
+  const [currentWorkout, setCurrentWorkout] = useState<any>([])
   return (
     <FitnessContext.Provider value={{ 
       authenticated, setAuthenticated,
-      initialScreen, setInitialScreen
+      initialScreen, setInitialScreen,
+      completed, setCompleted,
+      currentWorkout, setCurrentWorkout
     }}>
       {children}
     </FitnessContext.Provider>

@@ -1,89 +1,54 @@
 import { StyleSheet, Text, View,TouchableOpacity,SafeAreaView, StatusBar,Image, Pressable } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useEffect,useContext} from 'react'
 import {useLocalSearchParams, useRouter} from 'expo-router'
 import { ScrollView } from 'react-native-virtualized-view';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Ionicons  from '@expo/vector-icons/Ionicons';
+import LoadingScreen from './components/LoadingScreen';
+import { getExerciseMineById } from './api/ererciseDB';
+import { FitnessContext } from './Context';
 
 const Workout = () => {
     const router = useRouter()
     const params = useLocalSearchParams()
     const {id, name} = params
-    const [completed, setCompleted] = useState([
-        "JUMPING JACKS",
-        "INCLINE PUSH-UPS",
-        "CHEST STRETCH"
-    ])
-    //use this id to call backend to get the details of the workout
-    const exercises=[
-        {
-            id: "4",
-            image:
-              "https://i.ibb.co/vhFjxkh/core.webp",
-            name: "Core",
-            description: "7x4 CHALLENGE",
-            excersises: [
-              {
-                id:"20",
-                image:"https://i.ibb.co/qYMGF2D/Plie-Squat-Scoop-Up.gif",
-                name:"Plie Squat Scoop Up",
-                sets:9,
-              },
-              {
-                id:"21",
-                image:"https://i.ibb.co/qBsN62Z/Gate-Swings.gif",
-                name:"Gate Swings",
-                sets:10,
-              },
-              {
-                id:"22",
-                image:"https://i.ibb.co/BT7bf1z/Deadlift-Upright-Row.gif",
-                name:"Deadlift Upright Row",
-                sets:5,
-              },
-              {
-                id:"23",
-                image:"https://i.ibb.co/7yVj6rP/Squat-Curl.gif",
-                name:"Squat Curl",
-                sets:4,
-              },
-              {
-                id:"25",
-                image:"https://i.ibb.co/yhCFGqZ/Surfer-Burpees.gif",
-                name:"Surfer Burpees",
-                sets:12,
-              },
-              {
-                id:"26",
-                image:"https://i.ibb.co/n08vYk6/Diamond-Kicks.gif",
-                name:"Diamond Kicks",
-                sets:10
-              },
-              {
-                id:"27",
-                image:"https://i.ibb.co/TqsDgXG/Dead-Bug.gif",
-                name:"Dead Bug",
-                sets:12,
-              },
-              {
-                id:"28",
-                image:"https://i.ibb.co/KrTsC4z/Straight-Leg-Raise.gif",
-                name:"Straight Leg Raise",
-                sets:10
-              }
-            ]
-          }
-    ]
+    const [loading, setLoading] = useState(true)
+    const [exercises, setExercises] = useState<any>([])
+
+    const {completed, setCompleted, currentWorkout, setCurrentWorkout} = useContext(FitnessContext);
+
+    useEffect(() => {
+      getExercise()
+    },[id])
+
+    const getExercise = async () => {
+      try {
+        const res = await getExerciseMineById(id)
+        setExercises(res)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
   return (
     <SafeAreaView className='mt-10'>
-        <ScrollView>
+        {
+          loading ?
+          <LoadingScreen />
+          :
+          <ScrollView>
         <StatusBar style="light" />
         <Image 
           source={{uri:exercises[0].image}} style={{width: wp(100), height: hp(45)}} 
           className='rounded-b-[48px]'
         />
         <TouchableOpacity
-          onPress={()=>router.back()}
+          onPress={()=>
+            router.push({
+              pathname:'/exercise'
+            })
+          }
           className='absolute mx-2 mt-2 rounded-full left-0'
         >
           <Ionicons name="arrow-back-circle" size={hp(4.5)} color="#F43F5E" />
@@ -127,13 +92,16 @@ const Workout = () => {
                 }
               
             </View>
-            <TouchableOpacity
-                onPress={() =>  
-                    router.push({
-                        pathname:'/fitscreen',
-                        params:{id:exercises[0].id, name:exercises[0].name} 
-                    })
+            <Pressable
+                onPress={() =>  {
+                  router.push({
+                    pathname:'/fitscreen',
+                    params:{id:exercises[0].id, name:exercises[0].name} 
+                })
+                setCurrentWorkout(exercises[0].excersises)
+                } 
                 }
+                
                 className='bg-rose-500 p-2 mx-auto my-4 rounded-[6px] w-[120px]'
             >
                 <Text
@@ -141,10 +109,11 @@ const Workout = () => {
                 >
                     START
                 </Text>
-            </TouchableOpacity>
+            </Pressable>
 
         </View>
         </ScrollView>
+        }
     </SafeAreaView>
   )
 }
