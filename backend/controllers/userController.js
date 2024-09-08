@@ -61,8 +61,12 @@ const signIn = async (req, res) => {
   }
 
   const token = jwt.sign({ email: user.email }, 'secret', { expiresIn: '24h' });
-  
-  res.status(200).json({ message: 'Sign in successful', token: token });
+  const signInUser = await User.findOne({
+    email: email,
+  });
+  signInUser.token = token;
+  await signInUser.save();
+  res.status(200).json({ message: 'Sign in successful', token: token, user: signInUser });
 }
 
 export { getUsers, createUser,signIn };

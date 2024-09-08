@@ -3,6 +3,10 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import userRoutes from './routes/user.js';
 import exercisesRoutes from './routes/exercises.js';
+import nutritionRoutes from './routes/nutrition.js';
+import workoutsRoutes from './routes/workout.js';
+
+
 dotenv.config();
 
 // Connect to MongoDB
@@ -16,6 +20,8 @@ app.use(json());
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/exercises', exercisesRoutes);
+app.use('/api/nutrition', nutritionRoutes);
+app.use('/api/workouts', workoutsRoutes);
 
 const PORT = process.env.PORT || 5000;
 

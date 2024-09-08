@@ -28,27 +28,76 @@ const UserSchema = new Schema({
             type: Number,
             default: 0
         },
-        protein:{
+        sodium:{
             type: Number,
             default: 0
         },
+        date:{
+            type: Date,
+        }
     }
   ],
-  breakfast:[],
-  lunch:[],
-  dinner:[],
-  snacks:[],
-  BurntCalories:{
-    type: Number,
-    default: 0
-  },
+  breakfast:[
+    {
+        name:{
+            type: String,
+            default: ""
+        },
+        date:{
+          type: Date,
+        }
+    }
+  ],
+  lunch:[
+    {
+      name:{
+          type: String,
+          default: ""
+      },
+      date:{
+        type: Date,
+      }
+  }
+  ],
+  dinner:[
+    {
+      name:{
+          type: String,
+          default: ""
+      },
+      date:{
+        type: Date,
+      }
+  }
+  ],
+  snacks:[
+    {
+      name:{
+          type: String,
+      },
+      date:{
+        type: Date,
+      }
+  }
+  ],
+  BurntCalories:[
+    {
+        calories:{
+            type: Number,
+            default: 0
+        },
+        date:{
+            type: Date,
+        }
+    }
+  ],
   workout:[
     {
         name:{
             type: String,
             required: true
         },
-        calories:{
+        numberofsets:{
             type: Number,
             default: 0
         },
@@ -62,6 +111,13 @@ const UserSchema = new Schema({
         }
     }
   ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  token: {
+    type: String,
+  },
   
 });
 

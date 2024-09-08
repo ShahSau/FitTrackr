@@ -56,15 +56,16 @@ const Profile = () => {
               Profile
             </Text>
           </View>
-          <View className='flex justify-center items-center space-y-2'>
+          {/* <View className='flex justify-center items-center space-y-2'>
             <Image source={require('../../assets/images/avatar.jpg')} 
               style={{height:hp(8), width:hp(8)}}
               className='rounded-full'
             />
-          </View>
+          </View> */}
         </View>
 
         {/**Food intake */}
+        {/* call today's consumption API*/}
         <Animated.View 
           className='mx-5'
           entering={FadeInDown.duration(400).delay(200).springify()}
@@ -150,6 +151,7 @@ const Profile = () => {
         </Animated.View>
 
         {/*input calories */}
+        {/* call getConsumptionWithoutDate API*/}
         <Animated.View 
           entering={FadeInDown.duration(400).delay(500).springify()}
           className='mx-5'
