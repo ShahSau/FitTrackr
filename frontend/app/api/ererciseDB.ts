@@ -29,3 +29,32 @@ export const getExerciseByTarget = async (target:string) => {
     const data = await apiCall(`https://${baseUrl}/exercises/target/${target}`, {})
     return data
 }
+
+export const getAllexercisesMine = async () => {
+    const url = 'http://192.168.2.76:8080/api/exercises'
+    try {
+        const options = {
+            method: 'GET',
+            url: url,
+        }
+        const response = await axios.request(options)
+        return response.data        
+    } catch (error) {
+        console.log(error)
+        
+    }
+}
+
+export const getExerciseMineById = async (id:string) => {
+    const url = `http://192.168.2.76:8080/api/exercises/${id}`
+    try {
+        const options = {
+            method: 'GET',
+            url: url,
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
