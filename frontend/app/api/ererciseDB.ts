@@ -58,3 +58,40 @@ export const getExerciseMineById = async (id:string) => {
         console.log(error)
     }
 }
+
+export const signin = async (email:string, password:string) => {
+    const url = `http://192.168.2.76:8080/api/users/signin`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {
+                email: email,
+                password: password
+            }
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const signup = async (email:string, password:string, name:string) => {
+    const url = `http://192.168.2.76:8080/api/users`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {
+                email: email,
+                password: password,
+                name: name
+            }
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}

@@ -1,24 +1,33 @@
 import { StyleSheet,View, Text, TextInput, TouchableOpacity, Image , Button } from 'react-native'
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated,{ SlideInLeft, SlideInRight } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useRouter } from 'expo-router';
+import * as SecureStore from 'expo-secure-store';
+import { signup } from './api/ererciseDB';
+import { FitnessContext } from './Context';
 
 const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [fullName, setFullName] = useState('');
+    const [name, setName] = useState('');
+    const {setAuthenticated} = useContext(FitnessContext);
     const router = useRouter();
 
-    const handleRegistration = () => {
-        
-        //call backend and add authenticated context to true
+    const handleRegistration = async () => {
+      const res = await signup(email, password, name)
+      if (res.token){
+        await SecureStore.setItemAsync("token", res.token);
+      }
+      if(res.email && res.token){
         setEmail('');
         setPassword('');
-        setFullName('');
-        router.push('/')
+        setName('');
+        setAuthenticated(true);
+        router.push('/');
+      } 
     }
 
   return ( 
@@ -41,8 +50,8 @@ const Register = () => {
                 placeholder="Full Name"
                 className='border border-gray-300 rounded-lg p-3 text-rose-500'
                 placeholderTextColor={'#F43F5E'}
-                onChange={text => setFullName(text.nativeEvent.text)}
-                onSubmitEditing={text => setFullName(text.nativeEvent.text)}
+                onChange={text => setName(text.nativeEvent.text)}
+                onSubmitEditing={text => setName(text.nativeEvent.text)}
             />
         </Animated.View>
         {/* Email Input */}

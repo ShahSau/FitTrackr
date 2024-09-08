@@ -7,13 +7,16 @@ import rest3 from '../assets/images/rest-3.jpg';
 import rest4 from '../assets/images/rest-4.jpg';
 import rest5 from '../assets/images/rest-5.jpg';
 import rest6 from '../assets/images/rest-6.jpg';
+import rest7 from '../assets/images/rest-7.jpg';
+import rest8 from '../assets/images/rest-8.jpg';
+import rest9 from '../assets/images/rest-9.jpg';
 import { StatusBar } from "expo-status-bar";
   
 const RestScreen = () => {
     const router = useRouter();
     let timer = 0;
     const [timeLeft, setTimeLeft] = useState(10);
-    const images = [rest1, rest2, rest3, rest4, rest5, rest6];
+    const images = [rest1, rest2, rest3, rest4, rest5, rest6, rest7, rest8, rest9];
     const [restImage, setRestImage] = useState(images[0]);
     const startTime = () => {
         setTimeout(() => {
@@ -25,7 +28,7 @@ const RestScreen = () => {
         }, 1000);
       };
       useEffect(() => {
-        const randomNumner = Math.floor(Math.random() * 6);
+        const randomNumner = Math.floor(Math.random() * images.length);
         setRestImage(images[randomNumner]);
       },[]);
 

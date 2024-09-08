@@ -6,18 +6,27 @@ import Animated,{ SlideInLeft, SlideInRight } from 'react-native-reanimated';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useRouter } from 'expo-router';
 import { FitnessContext } from './Context';
+import { signin } from './api/ererciseDB';
+import * as SecureStore from 'expo-secure-store';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
-    const {authenticated, setAuthenticated} = useContext(FitnessContext);
+    const {setAuthenticated} = useContext(FitnessContext);
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
+      const res = await signin(email, password)
+      if (res?.token){
+        await SecureStore.setItemAsync("token", res.token);
+      }
+      if(res?.user && res?.token){
         setAuthenticated(true);
-        //call backend and add authenticated context to true
         setEmail('');
         setPassword('');
+        router.push('/');
+      }
+
     }
 
   return ( 

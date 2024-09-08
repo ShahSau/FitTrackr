@@ -15,7 +15,6 @@ const FitScreen = () => {
   const [excersises, setExcersises] = useState(currentWorkout)
   const [index, setIndex] = useState(0)
   const current = excersises[index]
-  console.log(excersises.length, "DD", index)
   return (
     <SafeAreaView className='mt-10'>
       <StatusBar style='dark' />

@@ -34,8 +34,10 @@ const createUser = async (req, res) => {
   newUser.lunch = [];
   newUser.dinner = [];
   newUser.snacks = [];
-  newUser.BurntCalories = 0;
+  newUser.BurntCalories = [];
   newUser.workout = [];
+  const token = jwt.sign({ email: newUser.email}, 'secret', { expiresIn: '24h' });
+  newUser.token = token;
   try {
     const savedUser = await newUser.save();
     res.status(201).json(savedUser);
@@ -49,6 +51,7 @@ const createUser = async (req, res) => {
 // @route   POST /api/users/signin
 const signIn = async (req, res) => {
   const { email, password } = req.body;
+  console.log("DDDDDDD",email,password);
   const user = await User.findOne({
     email: email,
   });
