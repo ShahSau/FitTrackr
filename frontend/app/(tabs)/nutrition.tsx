@@ -1,17 +1,40 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, {useState,useEffect,useContext} from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 import { ScrollView } from 'react-native-virtualized-view';
 import { useRouter } from 'expo-router'
+import { getNutrition } from '../api/ererciseDB';
+import LoadingScreen from '../components/LoadingScreen';
+import { FitnessContext } from '../Context';
 
 const Nutrition = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true)
+  const [nutrition, setNutrition] = useState([])
+  const {loggedemail} = useContext(FitnessContext)
+  
+  useEffect(() => {
+    const fetchNutrition = async () => {
+      const data = await getNutrition({email:loggedemail});
+      if (data !== undefined) {
+        setNutrition(data)
+      }
+      setIsLoading(false)
+    }
+    fetchNutrition()
+  }, [])
+
   return (
     <SafeAreaView className='flex-1 flex mt-10' edges={['top']}>
-      <ScrollView>
+      
+      {
+        isLoading ?
+        <LoadingScreen />
+        :
+        <ScrollView>
       <StatusBar style='dark' />
         {/*header */}
         <View className='flex-row justify-between items-center mx-5'>
@@ -39,25 +62,27 @@ const Nutrition = () => {
           <View className='mx-4 py-4 bg-gray-200'>
             <Text className='text-xl font-semibold text-center'>Today's consumption</Text>
             <View className='flex-row justify-between mt-4 '>
+
               <View className='flex-1'>
-                <Text className='text-center'>1,770mg</Text>
+                <Text className='text-center'>{nutrition.calories}</Text>
                 <Text className='text-center text-gray-500'>Calories</Text>
               </View>
 
               <View className='flex-1'>
-                <Text className='text-center'>166mg</Text>
+                <Text className='text-center'>{nutrition.fat}</Text>
                 <Text className='text-center text-gray-500'>Fat</Text>
               </View>
 
               <View className='flex-1'>
-                <Text className='text-center'>26mg</Text>
+                <Text className='text-center'>{nutrition.protein}</Text>
                 <Text className='text-center text-gray-500'>Protien</Text>
               </View>
 
               <View className='flex-1'>
-                <Text className='text-center'>16mg</Text>
+                <Text className='text-center'>{nutrition.sodium}</Text>
                 <Text className='text-center text-gray-500'>Sodium</Text>
               </View>
+
             </View>
           </View>
 
@@ -123,7 +148,7 @@ const Nutrition = () => {
         </View>
 
       </ScrollView>
-
+      }
     </SafeAreaView>
   )
 }

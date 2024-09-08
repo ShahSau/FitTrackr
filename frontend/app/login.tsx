@@ -13,17 +13,18 @@ const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
-    const {setAuthenticated} = useContext(FitnessContext);
+    const {setAuthenticated, setLoggedEmail} = useContext(FitnessContext);
 
     const handleLogin = async () => {
       const res = await signin(email, password)
       if (res?.token){
-        await SecureStore.setItemAsync("token", res.token);
+        await SecureStore.setItemAsync("email", res.user.email);
       }
       if(res?.user && res?.token){
         setAuthenticated(true);
         setEmail('');
         setPassword('');
+        setLoggedEmail(res.user.email);
         router.push('/');
       }
 

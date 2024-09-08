@@ -51,7 +51,6 @@ const createUser = async (req, res) => {
 // @route   POST /api/users/signin
 const signIn = async (req, res) => {
   const { email, password } = req.body;
-  console.log("DDDDDDD",email,password);
   const user = await User.findOne({
     email: email,
   });

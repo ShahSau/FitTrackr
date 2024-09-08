@@ -95,3 +95,22 @@ export const signup = async (email:string, password:string, name:string) => {
         console.log(error)
     }
 }
+
+
+// get todays nutrition
+export const getNutrition = async ({email}: {email: string}) => {
+    const url = `http://192.168.2.76:8080/api/nutrition`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data :{email: email}
+        }
+        const response = await axios.request(options)
+        console.log(response.data,"NUTRITION")
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+
+}

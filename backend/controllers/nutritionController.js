@@ -14,7 +14,15 @@ export const getConsumption = async (req, res) => {
         if (consumption.length === 0) {
             consumption = [{ date: today, calories: 0, protein: 0, fat: 0, sodium: 0 }];
         }
-        res.status(200).json(consumption);
+        let total = { calories: 0, protein: 0, fat: 0, sodium: 0 };
+        consumption.map(consumption => {
+            total.calories += consumption.calories;
+            total.protein += consumption.protein;
+            total.fat += consumption.fat;
+            total.sodium += consumption.sodium;
+        });
+
+        res.status(200).json(total);
     }
     catch (error) {
         res.status(400).json({ message: error.message });
@@ -211,26 +219,17 @@ export const getAllMeals = async (req, res) => {
     const { email } = req.body;
     const today = new Date();
     try {
-        const data =User.aggregate([
-            {
-              $match: {
-                email: email
-              },
-            },
-            {
-              $project: {
-                _id: 1,
-                meals: {
-                  $concatArrays: [
-                    { $filter: { input: "$user.breakfast", cond: { $eq: ["$$this.date", today] } } },
-                    { $filter: { input: "$user.lunch", cond: { $eq: ["$$this.date", today] } } },
-                    { $filter: { input: "$user.dinner", cond: { $eq: ["$$this.date", today] } } },
-                    { $filter: { input: "$user.snacks", cond: { $eq: ["$$this.date", today] } } },
-                  ],
-                },
-              },
-            },
-          ]);
+        const user = await User.findOne({ email: email });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        let data = {
+            breakfast: user.breakfast.filter(breakfast => new Date(breakfast.date).toISOString().split('T')[0] === today.toISOString().split('T')[0]),
+            lunch: user.lunch.filter(lunch => new Date(lunch.date).toISOString().split('T')[0] === today.toISOString().split('T')[0]),
+            dinner: user.dinner.filter(dinner => new Date(dinner.date).toISOString().split('T')[0] === today.toISOString().split('T')[0]),
+            snacks: user.snacks.filter(snacks => new Date(snacks.date).toISOString().split('T')[0] === today.toISOString().split('T')[0])
+        }
+        
     
             res.status(200).json(data);
     } catch (error) {

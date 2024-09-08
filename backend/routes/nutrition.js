@@ -12,10 +12,10 @@ const router = Router();
 
 
 // get today's consumtion
-router.get('/', getConsumption);
+router.post('/', getConsumption);
 
 // add to today's consumtion
-router.post('/', addConsumption);
+router.post('/add', addConsumption);
 
 // get consumption without date
 router.get('/consumption', getConsumptionWithoutDate);
@@ -50,6 +50,6 @@ router.get('/snacks', getSnacks);
 router.post('/snacks', addSnacks);
 
 // get all meals
-router.get('/all', getAllMeals);
+router.post('/all', getAllMeals);
 
 export default router;
