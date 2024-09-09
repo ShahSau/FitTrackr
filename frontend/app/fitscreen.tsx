@@ -3,6 +3,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import { StatusBar } from 'expo-status-bar'
 import {useLocalSearchParams, useRouter} from 'expo-router'
 import { FitnessContext } from './Context';
+import { createWorkout,createCaloriesBurnt } from './api/ererciseDB';
 
 
 const FitScreen = () => {
@@ -10,11 +11,31 @@ const FitScreen = () => {
   const {id, name} = params
   
   const router = useRouter()
-  const {completed, setCompleted, currentWorkout, setCurrentWorkout} = useContext(FitnessContext);
+  const {
+    completed, setCompleted,
+    currentWorkout, setCurrentWorkout,
+    burntCalories, setBurntCalories,
+    totalMinutes, setTotalMinutes,
+    totalSets, setTotalSets
+  } = useContext(FitnessContext);
 
   const [excersises, setExcersises] = useState(currentWorkout)
   const [index, setIndex] = useState(0)
   const current = excersises[index]
+  const {loggedemail} = useContext(FitnessContext)
+  const sendData = async () => {
+    const res = await createWorkout({email:loggedemail,numberofsets:totalSets,duration:totalMinutes})
+    console.log(res)
+    return res
+  }
+
+  const sentCaloriesBurnt = async () => {
+    const res = await createCaloriesBurnt({email:loggedemail,calories:burntCalories})
+    console.log(res)
+    return res
+  }
+
+
   return (
     <SafeAreaView className='mt-10'>
       <StatusBar style='dark' />
@@ -48,15 +69,23 @@ const FitScreen = () => {
       </Text>
       {index + 1 >= excersises.length ? (
         <Pressable
-        //   onPress={() => {
-        //     navigation.navigate("Home");
-        //   }}
         onPress={()=>{
+          //call backend to store the data
+          
+          const data = sendData()
+          const calDate = sentCaloriesBurnt()
+          if (data !== undefined && calDate !== undefined){
+            console.log('data stored')
+          //clear calories and minutes and call backend to store the data
           router.push({
             pathname:'/workout',
             params:{id:id, name:name}
         })
         setCurrentWorkout([])
+        setBurntCalories(0)
+        setTotalMinutes(0)
+        setTotalSets(0)
+      }
       }}
         style={{
           backgroundColor: "green",
@@ -82,14 +111,13 @@ const FitScreen = () => {
       ) : (
         <Pressable
           onPress={() => {
-            // navigation.navigate("Rest");
             router.push({
                 pathname:'/restscreen',
             })
             setCompleted([...completed, current.name]);
-            //setWorkout(workout + 1);
-            //setMinutes(minutes + 2.5);
-            //setCalories(calories + 6.3);
+            setBurntCalories(burntCalories + 6.3);
+            setTotalMinutes(totalMinutes + 2.5);
+            setTotalSets(totalSets + current.sets);
             setTimeout(() => {
               setIndex(index + 1);
             }, 2000);
@@ -215,9 +243,3 @@ const FitScreen = () => {
 export default FitScreen
 
 const styles = StyleSheet.create({})
-
-
-
-
-
-[{"_id": "66dcdbae9638210972ead943", "id": "10", "image": "https://i.ibb.co/THQ15x6/Dumbbell-Chest-Press.gif", "name": "Dumbbell Chest Press", "sets": 10}, {"_id": "66dcdbae9638210972ead944", "id": "11", "image": "https://i.ibb.co/ydskVPQ/Diamond-Kicks.gif", "name": "Diamond Kicks", "sets": 10}, {"_id": "66dcdbae9638210972ead945", "id": "12", "image": "https://i.ibb.co/j3fnL4D/Dumbbell-Pullover.gif", "name": "Dumbbell Pullover", "sets": 20}, {"_id": "66dcdbae9638210972ead946", "id": "13", "image": "https://i.ibb.co/r6V48s8/Side-Plank-Rotation.gif", "name": "Side Plank Rotation", "sets": 10}, {"_id": "66dcdbae9638210972ead947", "id": "14", "image": "https://i.ibb.co/2yRz4Kf/Lunge-Back-Kick.gif", "name": "Lunge Back Kick", "sets": 14}, {"_id": "66dcdbae9638210972ead948", "id": "15", "image": "https://i.ibb.co/LRYwwmb/Rope-Climb-Crunches.gif", "name": "Rope Climb Crunches", "sets": 14}, {"_id": "66dcdbae9638210972ead949", "id": "16", "image": "https://i.ibb.co/VDJyhLQ/Frog-Bridge.gif", "name": "Frog Bridge", "sets": 14}, {"_id": "66dcdbae9638210972ead94a", "id": "17", "image": "https://i.ibb.co/WPzZyr2/Touch-And-Hop.gif", "name": "Touch And Hop", "sets": 14}]

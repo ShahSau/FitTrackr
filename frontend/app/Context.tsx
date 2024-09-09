@@ -12,13 +12,19 @@ const FitnessContextProvider = ({ children }: any) => {
   const  [completed, setCompleted] = useState<any>([])
   const [currentWorkout, setCurrentWorkout] = useState<any>([])
   const [loggedemail, setLoggedEmail] = useState<string>("")
+  const [burntCalories, setBurntCalories] = useState<number>(0)
+  const [totalMinutes, setTotalMinutes] = useState<number>(0)
+  const [totalSets, setTotalSets] = useState<number>(0)
   return (
     <FitnessContext.Provider value={{ 
       authenticated, setAuthenticated,
       initialScreen, setInitialScreen,
       completed, setCompleted,
       currentWorkout, setCurrentWorkout,
-      loggedemail, setLoggedEmail
+      loggedemail, setLoggedEmail,
+      burntCalories, setBurntCalories,
+      totalMinutes, setTotalMinutes,
+      totalSets, setTotalSets
     }}>
       {children}
     </FitnessContext.Provider>

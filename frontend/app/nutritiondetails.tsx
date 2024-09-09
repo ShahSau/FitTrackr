@@ -7,7 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
 import { ScrollView } from 'react-native-virtualized-view';
 import LoadingScreen from './components/LoadingScreen';
-import { addFood } from './api/ererciseDB';
+import { addFood,addNutrition } from './api/ererciseDB';
 import { FitnessContext } from './Context';
 
 const NutritionDetails = () => {
@@ -59,11 +59,19 @@ const NutritionDetails = () => {
             description: `${params.type}, ${params.time} mins,  ${params.servings} servings`,
             meal:params.meal,
         }
+        const nutritionParams:any={
+            email:loggedemail,
+            calories:parseInt(params.calories.toString()),
+            fat:parseInt(params.fat.toString()),
+            protein:parseInt(params.protein.toString()),
+            sodium:parseInt(params.sodium.toString()),
+        }
         const data = await addFood(addParams)
-        if(data === undefined){
+        const nutritionData = await addNutrition(nutritionParams)
+        if(data === undefined || nutritionData === undefined){
             console.log('error')
         }
-        if(data){
+        if(data !== undefined && nutritionData !== undefined){
             router.push('/nutrition')
         }
     }

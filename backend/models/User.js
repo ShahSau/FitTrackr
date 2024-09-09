@@ -125,10 +125,6 @@ const UserSchema = new Schema({
   ],
   workout:[
     {
-        name:{
-            type: String,
-            required: true
-        },
         numberofsets:{
             type: Number,
             default: 0

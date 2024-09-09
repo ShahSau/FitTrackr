@@ -12,7 +12,7 @@ const router = Router();
 router.get('/', getCaloriesBurned);
 
 //Create a calorie burned
-router.post('/', createCaloriesBurned);
+router.post('/calories', createCaloriesBurned);
 
 //get all workouts
 router.get('/all', getAllWorkouts);

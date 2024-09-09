@@ -57,14 +57,20 @@ export const getAllWorkouts = async (req, res) => {
 }
 
 export const createWorkout = async (req, res) => {
-    const { email, name, numberofsets, duration, date } = req.body;
+    const { email, numberofsets, duration, date } = req.body;
     try {
         const user = await User.findOne({ email: email });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
         let newdate = new Date(date);
-        user.workout.push({ name, numberofsets, duration, date: newdate });
+        const dateFilter = user.workout.filter(workout => workout.date.getDate() == newdate.getDate());
+        if (dateFilter.length > 0) {
+            dateFilter[0].numberofsets += numberofsets;
+            dateFilter[0].duration += duration;
+        }else{
+            user.workout.push({ numberofsets, duration, date: newdate });
+        }
         user.save();
         res.status(200).json({ message: "Workout updated", user });
     }
@@ -72,6 +78,8 @@ export const createWorkout = async (req, res) => {
         res.status(400).json({ message: error.message });
     }
 }
+
+
 
 export const getWorkoutDays = async (req, res) => {
     const { email } = req.body;

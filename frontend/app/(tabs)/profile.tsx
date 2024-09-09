@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View, Image,ScrollView } from 'react-native'
-import React from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Animated, { FadeInDown } from 'react-native-reanimated';
+import { FitnessContext } from '../Context';
 import {
   LineChart,
   ProgressChart,
@@ -11,6 +12,8 @@ import {
   StackedBarChart,
   BarChart
 } from "react-native-chart-kit";
+import LoadingScreen from '../components/LoadingScreen';
+import { getNutrition } from '../api/ererciseDB';
 
 const workoutDays = [
   { date: "2024-09-02", count: 1 },
@@ -27,25 +30,45 @@ const workoutDays = [
 ];
 
 const Profile = () => {
-  const foodData ={
-    labels: ["Calories", "Fat", "Protein", "Sodium"], // optional
-  data: [0.4, 0.6, 0.8, 0.2]
-  }
+  const [loading, setLoading] = useState(true)
+  const [fooddata, setFoodData] = useState<any>()
+
   
   const stackBarData = {
-    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+    labels: ["22-09-00", "2222", "222", "22"],
     legend: ["Calories", "Fat", "Protein", "Sodium"],
     data: [
       [60, 60, 60, 60],
       [30, 30, 60, 30],
+      [30, 30, 30, 30],
+      [30, 30, 30, 30]
     ],
     barColors: ["#dfe4ea", "#ced6e0", "#a4b0be", "#747d8c"]
   };
+  const {loggedemail} = useContext(FitnessContext)
+  const getNutritionData = async () => {
+    const data = await getNutrition({email:loggedemail})
+    const total = data.calories + data.fat + data.protein + data.sodium
+    const foodData ={
+      labels: ["Calories", "Fat", "Protein", "Sodium"],
+      data: [data.calories/total, data.fat/total, data.protein/total, data.sodium/total]
+    }
+    setFoodData(foodData)
+    setLoading(false)
+  }
 
+  useEffect(() => {
+    getNutritionData()
+  }
+  ,[])
   return (
     <SafeAreaView className='flex-1 flex space-y-5' edges={['top']}>
         <StatusBar style='dark' />
-        <ScrollView>
+        {
+          loading ?
+          <LoadingScreen />
+          :
+          <ScrollView>
 
         <View className='flex-row justify-between items-center mx-5'>
           <View className='space-y-2'>
@@ -56,12 +79,6 @@ const Profile = () => {
               Profile
             </Text>
           </View>
-          {/* <View className='flex justify-center items-center space-y-2'>
-            <Image source={require('../../assets/images/avatar.jpg')} 
-              style={{height:hp(8), width:hp(8)}}
-              className='rounded-full'
-            />
-          </View> */}
         </View>
 
         {/**Food intake */}
@@ -72,7 +89,7 @@ const Profile = () => {
         >
           <Text className='font-bold text-rose-500 text-lg'>Food Intake</Text>
           <ProgressChart
-            data={foodData}
+            data={fooddata}
             width={wp(90)}
             height={hp(30)}
             strokeWidth={16}
@@ -194,6 +211,7 @@ const Profile = () => {
         </Animated.View>
 
         </ScrollView>
+        }
     </SafeAreaView>
   )
 }

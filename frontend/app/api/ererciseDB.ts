@@ -151,3 +151,70 @@ export const addFood = async ({email,name, quantity,description ,meal}:{email:st
         console.log(error)
     }
 }
+
+
+//add todays nutrition
+export const addNutrition = async ({email,calories,fat,protein,sodium}:{email:string,calories:number,fat:number,protein:number,sodium:number}) => {
+    const url = `http://192.168.2.76:8080/api/nutrition/add`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {
+                email: email,
+                calories: calories,
+                fat: fat,
+                protein: protein,
+                sodium: sodium,
+                date: new Date()
+            }
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+//crete workout
+export const createWorkout = async ({email,numberofsets,duration}:{email:string,numberofsets:number, duration:number}) => {
+    const url = `http://192.168.2.76:8080/api/workouts/create`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {
+                email: email,
+                numberofsets: numberofsets,
+                duration: duration,
+                date: new Date()
+            }
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//create calories burnt
+export const createCaloriesBurnt = async ({email,calories}:{email:string,calories:number}) => {
+    const url = `http://192.168.2.76:8080/api/workouts/calories`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {
+                email: email,
+                calories: calories,
+                date: new Date()
+            }
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}

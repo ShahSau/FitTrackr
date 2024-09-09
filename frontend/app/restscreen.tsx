@@ -15,7 +15,7 @@ import { StatusBar } from "expo-status-bar";
 const RestScreen = () => {
     const router = useRouter();
     let timer = 0;
-    const [timeLeft, setTimeLeft] = useState(10);
+    const [timeLeft, setTimeLeft] = useState(2);
     const images = [rest1, rest2, rest3, rest4, rest5, rest6, rest7, rest8, rest9];
     const [restImage, setRestImage] = useState(images[0]);
     const startTime = () => {
