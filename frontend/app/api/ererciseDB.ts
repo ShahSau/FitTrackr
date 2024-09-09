@@ -31,7 +31,7 @@ export const getExerciseByTarget = async (target:string) => {
 }
 
 export const getAllexercisesMine = async () => {
-    const url = 'http://192.168.2.76:8080/api/exercises'
+    const url = 'https://fittrackr-xyrk.onrender.com/api/exercises'
     try {
         const options = {
             method: 'GET',
@@ -46,7 +46,7 @@ export const getAllexercisesMine = async () => {
 }
 
 export const getExerciseMineById = async (id:string) => {
-    const url = `http://192.168.2.76:8080/api/exercises/${id}`
+    const url = `https://fittrackr-xyrk.onrender.com/api/exercises/${id}`
     try {
         const options = {
             method: 'GET',
@@ -60,7 +60,7 @@ export const getExerciseMineById = async (id:string) => {
 }
 
 export const signin = async (email:string, password:string) => {
-    const url = `http://192.168.2.76:8080/api/users/signin`
+    const url = `https://fittrackr-xyrk.onrender.com/api/users/signin`
     try {
         const options = {
             method: 'POST',
@@ -78,7 +78,7 @@ export const signin = async (email:string, password:string) => {
 }
 
 export const signup = async (email:string, password:string, name:string) => {
-    const url = `http://192.168.2.76:8080/api/users`
+    const url = `https://fittrackr-xyrk.onrender.com/api/users`
     try {
         const options = {
             method: 'POST',
@@ -99,7 +99,7 @@ export const signup = async (email:string, password:string, name:string) => {
 
 // get todays nutrition
 export const getNutrition = async ({email}: {email: string}) => {
-    const url = `http://192.168.2.76:8080/api/nutrition`
+    const url = `https://fittrackr-xyrk.onrender.com/api/nutrition`
     try {
         const options = {
             method: 'POST',
@@ -116,7 +116,7 @@ export const getNutrition = async ({email}: {email: string}) => {
 
 // get all meals
 export const getAllMeals = async ({email}:{email:string}) => {
-    const url = `http://192.168.2.76:8080/api/nutrition/all`
+    const url = `https://fittrackr-xyrk.onrender.com/api/nutrition/all`
     try {
         const options = {
             method: 'POST',
@@ -132,7 +132,7 @@ export const getAllMeals = async ({email}:{email:string}) => {
 
 //add food
 export const addFood = async ({email,name, quantity,description ,meal}:{email:string, name:string, quantity:number, description:string, meal:string}) =>{
-    const url = `http://192.168.2.76:8080/api/nutrition/${meal}`
+    const url = `https://fittrackr-xyrk.onrender.com/api/nutrition/${meal}`
     try {
         const options = {
             method: 'POST',
@@ -155,7 +155,7 @@ export const addFood = async ({email,name, quantity,description ,meal}:{email:st
 
 //add todays nutrition
 export const addNutrition = async ({email,calories,fat,protein,sodium}:{email:string,calories:number,fat:number,protein:number,sodium:number}) => {
-    const url = `http://192.168.2.76:8080/api/nutrition/add`
+    const url = `https://fittrackr-xyrk.onrender.com/api/nutrition/add`
     try {
         const options = {
             method: 'POST',
@@ -180,7 +180,7 @@ export const addNutrition = async ({email,calories,fat,protein,sodium}:{email:st
 
 //crete workout
 export const createWorkout = async ({email,numberofsets,duration}:{email:string,numberofsets:number, duration:number}) => {
-    const url = `http://192.168.2.76:8080/api/workouts/create`
+    const url = `https://fittrackr-xyrk.onrender.com/api/workouts/create`
     try {
         const options = {
             method: 'POST',
@@ -201,7 +201,7 @@ export const createWorkout = async ({email,numberofsets,duration}:{email:string,
 
 //create calories burnt
 export const createCaloriesBurnt = async ({email,calories}:{email:string,calories:number}) => {
-    const url = `http://192.168.2.76:8080/api/workouts/calories`
+    const url = `https://fittrackr-xyrk.onrender.com/api/workouts/calories`
     try {
         const options = {
             method: 'POST',
@@ -221,7 +221,7 @@ export const createCaloriesBurnt = async ({email,calories}:{email:string,calorie
 
 //get all workouts
 export const getAllWorkouts = async ({email}:{email:string}) => {
-    const url =  `http://192.168.2.76:8080/api/workouts/all`
+    const url =  `https://fittrackr-xyrk.onrender.com/api/workouts/all`
     try {
         const options = {
             method: 'POST',
@@ -238,7 +238,7 @@ export const getAllWorkouts = async ({email}:{email:string}) => {
 
 //get all calories burnt
 export const getAllCaloriesBurnt = async ({email}:{email:string}) => {
-    const url =   `http://192.168.2.76:8080/api/workouts/calburn`
+    const url =   `https://fittrackr-xyrk.onrender.com/api/workouts/calburn`
     try {
         const options = {
             method: 'POST',
