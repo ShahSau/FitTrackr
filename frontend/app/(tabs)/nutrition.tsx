@@ -6,14 +6,31 @@ import { StatusBar } from 'expo-status-bar';
 import Ionicons  from '@expo/vector-icons/Ionicons';
 import { ScrollView } from 'react-native-virtualized-view';
 import { useRouter } from 'expo-router'
-import { getNutrition } from '../api/ererciseDB';
+import { getNutrition,getAllMeals } from '../api/ererciseDB';
 import LoadingScreen from '../components/LoadingScreen';
 import { FitnessContext } from '../Context';
+
 
 const Nutrition = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true)
-  const [nutrition, setNutrition] = useState([])
+  const [nutrition, setNutrition] = useState({
+    calories:0,
+    fat:0,
+    protein:0,
+    sodium:0
+  })
+  const [meals, setMeals] = useState<{
+    breakfast: { name: string; quantity: number; description: string, date:any }[];
+    lunch: { name: string; quantity: number; description: string, date:any }[];
+    dinner: { name: string; quantity: number; description: string, date:any }[];
+    snacks: { name: string; quantity: number; description: string, date:any }[];
+  }>({
+    breakfast:[],
+    lunch:[],
+    dinner:[],
+    snacks:[]
+  })
   const {loggedemail} = useContext(FitnessContext)
   
   useEffect(() => {
@@ -22,9 +39,23 @@ const Nutrition = () => {
       if (data !== undefined) {
         setNutrition(data)
       }
-      setIsLoading(false)
+      
     }
+
+    const fetchAllMeals = async () => {
+      const data = await getAllMeals({email:loggedemail});
+      if (data !== undefined) {
+        setMeals(data)
+      }
+      
+    }
+    if (nutrition !== undefined && meals !== undefined) {
+      setIsLoading(false)
+      console.log(meals)
+    }
+
     fetchNutrition()
+    fetchAllMeals()
   }, [])
 
   return (
@@ -98,11 +129,15 @@ const Nutrition = () => {
               </TouchableOpacity>
             </View>
 
-            <Text className='text-gray-500 mb-2'>
-              Cafe Au Lait - Grams{'\n'}
-              Nescafe-dolce Gusto, 180 ml
-            </Text>
-            <Text className='text-gray-500 mb-2'>Egg{'\n'}2 medium</Text>
+            {/*render breakfast*/}
+            {
+              meals.breakfast.map((meal, index) => (
+                <Text key={index} className='text-gray-500 mb-2'>
+                  {meal.name} - {meal.quantity}{'\n'}
+                  {meal.description}
+                </Text>
+              ))
+            }
 
           </View>
 
@@ -117,6 +152,15 @@ const Nutrition = () => {
                 <Ionicons name="add" size={hp(3)} color="#F43F5E" />
               </TouchableOpacity>
             </View>
+            {/*render lunch*/}
+            {
+              meals.lunch.map((meal, index) => (
+                <Text key={index} className='text-gray-500 mb-2'>
+                  {meal.name} - {meal.quantity}{'\n'}
+                  {meal.description}
+                </Text>
+              ))
+            }
           </View>
         
           {/* Dinner Section */}
@@ -130,6 +174,15 @@ const Nutrition = () => {
                 <Ionicons name="add" size={hp(3)} color="#F43F5E" />
               </TouchableOpacity>
             </View>
+            {/*render dinner*/}
+            {
+              meals.dinner.map((meal, index) => (
+                <Text key={index} className='text-gray-500 mb-2'>
+                  {meal.name} - {meal.quantity}{'\n'}
+                  {meal.description}
+                </Text>
+              ))
+            }
           </View>
     
         
@@ -144,6 +197,15 @@ const Nutrition = () => {
                 <Ionicons name="add" size={hp(3)} color="#F43F5E" />
               </TouchableOpacity>
             </View>
+            {/*render snacks*/}
+            {
+              meals.snacks.map((meal, index) => (
+                <Text key={index} className='text-gray-500 mb-2'>
+                  {meal.name} - {meal.quantity}{'\n'}
+                  {meal.description}
+                </Text>
+              ))
+            }
           </View> 
         </View>
 

@@ -43,6 +43,14 @@ const UserSchema = new Schema({
             type: String,
             default: ""
         },
+        quantity:{
+            type: Number,
+            default: 0
+        },
+        description:{
+            type: String,
+            default: ""
+        },
         date:{
           type: Date,
         }
@@ -54,6 +62,14 @@ const UserSchema = new Schema({
           type: String,
           default: ""
       },
+      quantity:{
+        type: Number,
+        default: 0
+    },
+    description:{
+        type: String,
+        default: ""
+    },
       date:{
         type: Date,
       }
@@ -65,6 +81,14 @@ const UserSchema = new Schema({
           type: String,
           default: ""
       },
+      quantity:{
+        type: Number,
+        default: 0
+    },
+    description:{
+        type: String,
+        default: ""
+    },
       date:{
         type: Date,
       }
@@ -75,6 +99,14 @@ const UserSchema = new Schema({
       name:{
           type: String,
       },
+      quantity:{
+        type: Number,
+        default: 0
+    },
+    description:{
+        type: String,
+        default: ""
+    },
       date:{
         type: Date,
       }

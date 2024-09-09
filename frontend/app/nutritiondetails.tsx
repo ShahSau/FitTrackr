@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import { useRouter,useLocalSearchParams } from 'expo-router';
 import { StyleSheet, View, Text, TouchableOpacity, Image, StatusBar,FlatList } from 'react-native';
 import Ionicons  from '@expo/vector-icons/Ionicons';
@@ -6,13 +6,16 @@ import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-nativ
 import { SafeAreaView } from 'react-native-safe-area-context';
 import axios from 'axios';
 import { ScrollView } from 'react-native-virtualized-view';
-
+import LoadingScreen from './components/LoadingScreen';
+import { addFood } from './api/ererciseDB';
+import { FitnessContext } from './Context';
 
 const NutritionDetails = () => {
     const router = useRouter();
     const params = useLocalSearchParams()
     const [tab, setTab] = useState('ingredients')
     const [data, setData] = useState<any>([])
+    const [loading, setLoading] = useState(true)
     const id = params.links.split("/v2")[1].split("?")[0].substring(1)
 
 
@@ -29,6 +32,7 @@ const NutritionDetails = () => {
 
             }
             const response = await axios.request(options)
+            console.log(params)
             return response.data
         } catch (error) {
             console.log(error)
@@ -39,41 +43,57 @@ const NutritionDetails = () => {
     const apiCall = async ()=>{
         const data = await fetchData()
         setData(data)
+        setLoading(false)
     }
 
     useEffect(() => {
-
         apiCall()
-        
     },[])
 
-    if(data.length === 0){
-        return <Text>Loading...</Text>
+    const {loggedemail} = useContext(FitnessContext)
+    const addFoodToDB = async () => {
+        const addParams:any={
+            email:loggedemail,
+            name:params.name,
+            quantity:1,
+            description: `${params.type}, ${params.time} mins,  ${params.servings} servings`,
+            meal:params.meal,
+        }
+        const data = await addFood(addParams)
+        if(data === undefined){
+            console.log('error')
+        }
+        if(data){
+            router.push('/nutrition')
+        }
     }
     
 
   return (
-
-        <SafeAreaView className='flex-1 flex space-y-5 mt-2' edges={['top']}>
+    <SafeAreaView className='flex-1 flex space-y-5 mt-2' edges={['top']}>
+       {
+        loading ?
+        <LoadingScreen />
+        :
         <ScrollView className='flex-1 bg-white'>
-            <StatusBar style='dark' />
-            <Image 
-                source={{uri:data.recipe.image}} 
-                style={{width: wp(100), height: hp(45)}} 
-                className='rounded-b-[48px]'
-            />
-            <TouchableOpacity
-                onPress={()=>router.back()}
-                className='absolute mx-2 mt-2 rounded-full left-0'
-            >
-                <Ionicons name="arrow-back-circle" size={hp(4.5)} color="#F43F5E" />
-            </TouchableOpacity>
-            <TouchableOpacity 
-                className='absolute mx-2 mt-2 mr-4 rounded-full right-0'
-                //onPress={()=>router.navigate('addnutrition')} // add to the list
-            >
-                <Ionicons name="bookmark-outline" size={24} color="#F43F5E" />
-            </TouchableOpacity>
+        <StatusBar style='dark' />
+        <Image 
+            source={{uri:data.recipe.image}} 
+            style={{width: wp(100), height: hp(45)}} 
+            className='rounded-b-[48px]'
+        />
+        <TouchableOpacity
+            onPress={()=>router.back()}
+            className='absolute mx-2 mt-2 rounded-full left-0'
+        >
+            <Ionicons name="arrow-back-circle" size={hp(4.5)} color="#F43F5E" />
+        </TouchableOpacity>
+        <TouchableOpacity 
+            className='absolute mx-2 mt-2 mr-4 rounded-full right-0'
+            onPress={()=>addFoodToDB()}
+        >
+            <Ionicons name="add-circle-sharp" size={hp(4.6)} color="#F43F5E" />
+        </TouchableOpacity>
 
 
         {/* Recipe Title */}
@@ -176,7 +196,7 @@ const NutritionDetails = () => {
                     contentContainerStyle={{paddingBottom:50, paddingTop:20}}
                     columnWrapperStyle={{justifyContent:'space-between'}}
                     keyExtractor={(item) => item}
-                    renderItem={({item,index})=><Text className=' bg-rose-500  text-white font-bold py-2 px-4 rounded m-2 text-center' key={index}>{item}</Text>}
+                    renderItem={({item,index})=><Text className=' bg-rose-500  text-white font-bold py-2 px-4 rounded m-2 text-center' key={index+item}>{item}</Text>}
                 />
 
         </View>
@@ -192,6 +212,7 @@ const NutritionDetails = () => {
         </View>
         )}
         </ScrollView>
+       }
     </SafeAreaView>
   )
 }
@@ -199,7 +220,6 @@ const NutritionDetails = () => {
 export default NutritionDetails
 
 const styles = StyleSheet.create({})
-
 
 
 

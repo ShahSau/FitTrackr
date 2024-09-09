@@ -53,7 +53,6 @@ const Addnutrition = () => {
     ,[search])
 
 
-
   return (
     <ScrollView className='mt-6'>
     <View className='flex-1 bg-white flex mt-6'>
@@ -97,7 +96,7 @@ const Addnutrition = () => {
                             fat:item.recipe.totalNutrients.FAT.quantity,
                             energy:item.recipe.totalNutrients.ENERC_KCAL.quantity,
                             carbs:item.recipe.totalNutrients.CHOCDF.quantity,
-                            // image:item.recipe.image,
+                            meal:params.name,
                             ingredients:item.recipe.ingredientLines,
                              // url:item.recipe.url,
                             type:item.recipe.cuisineType[0],

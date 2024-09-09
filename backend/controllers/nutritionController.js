@@ -81,14 +81,14 @@ export const getBreakfast = async (req, res) => {
 
 // add to today's Breakfast
 export const addBreakfast = async (req, res) => {
-    const {email, name, date} = req.body
+    const {email, name, date, quantity, description} = req.body
     try {
         const user = await User.findOne({ email: email });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
         let newdate = new Date(date);
-        user.breakfast.push({ name, date:newdate });
+        user.breakfast.push({ name, date:newdate, quantity, description });
         user.save();
         res.status(200).json({ message: "Breakfast Added", user });
     }
@@ -119,14 +119,14 @@ export const getLunch = async (req, res) => {
 
 // add to today's Lunch
 export const addLunch = async (req, res) => {
-    const {email, name, date} = req.body
+    const {email, name, date, quantity, description} = req.body
     try {
        const user = await User.findOne({ email: email });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
         let newdate = new Date(date);
-        user.lunch.push({ name, date:newdate });
+        user.lunch.push({ name, date:newdate, quantity, description });
         user.save();
         res.status(200).json({ message: "Lunch Added", user });
     }
@@ -157,14 +157,14 @@ export const getDinner = async (req, res) => {
 
 // add to today's Dinner
 export const addDinner = async (req, res) => {
-    const {email, name, date} = req.body
+    const {email, name, date, quantity, description} = req.body
     try {
        const user = await User.findOne({ email: email });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
         let newdate = new Date(date);
-        user.dinner.push({ name, date:newdate });
+        user.dinner.push({ name, date:newdate, quantity, description });
         user.save();
         res.status(200).json({ message: "dinner Added", user });
     }
@@ -196,14 +196,14 @@ export const getSnacks = async (req, res) => {
 
 // add to today's Snacks
 export const addSnacks = async (req, res) => {
-    const {email, name, date} = req.body
+    const {email, name, date, quantity, description} = req.body
     try {
        const user = await User .findOne({ email: email });
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
         let newdate = new Date(date);
-        user.snacks.push({ name, date:newdate });
+        user.snacks.push({ name, date:newdate, quantity, description });
         user.save();
         res.status(200).json({ message: "snacks Added", user });
     }
@@ -229,7 +229,7 @@ export const getAllMeals = async (req, res) => {
             dinner: user.dinner.filter(dinner => new Date(dinner.date).toISOString().split('T')[0] === today.toISOString().split('T')[0]),
             snacks: user.snacks.filter(snacks => new Date(snacks.date).toISOString().split('T')[0] === today.toISOString().split('T')[0])
         }
-        
+
     
             res.status(200).json(data);
     } catch (error) {

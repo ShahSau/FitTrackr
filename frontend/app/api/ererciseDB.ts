@@ -107,10 +107,47 @@ export const getNutrition = async ({email}: {email: string}) => {
             data :{email: email}
         }
         const response = await axios.request(options)
-        console.log(response.data,"NUTRITION")
         return response.data
     } catch (error) {
         console.log(error)
     }
 
+}
+
+// get all meals
+export const getAllMeals = async ({email}:{email:string}) => {
+    const url = `http://192.168.2.76:8080/api/nutrition/all`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {email: email}
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//add food
+export const addFood = async ({email,name, quantity,description ,meal}:{email:string, name:string, quantity:number, description:string, meal:string}) =>{
+    const url = `http://192.168.2.76:8080/api/nutrition/${meal}`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {
+                email: email,
+                name: name,
+                quantity: quantity,
+                description: description,
+                date: new Date()
+            }
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
 }

@@ -39,7 +39,7 @@ const Register = () => {
           style={StyleSheet.absoluteFillObject}
           start={{ x: 0.2, y: 0 }}
           end={{ x: 0.4, y: 0.7 }}
-          className=' flex justify-end pb-12 spac-y-8'
+          className='flex justify-end pb-12 spac-y-8'
         >
         {/* Full Name Input */}
         <Animated.View 
