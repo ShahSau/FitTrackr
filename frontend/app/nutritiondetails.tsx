@@ -32,7 +32,7 @@ const NutritionDetails = () => {
 
             }
             const response = await axios.request(options)
-            console.log(params)
+
             return response.data
         } catch (error) {
             console.log(error)

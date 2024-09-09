@@ -218,3 +218,36 @@ export const createCaloriesBurnt = async ({email,calories}:{email:string,calorie
         console.log(error)
     }
 }
+
+//get all workouts
+export const getAllWorkouts = async ({email}:{email:string}) => {
+    const url =  `http://192.168.2.76:8080/api/workouts/all`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {email: email}
+        }
+        const response = await axios.request(options)
+        console.log(response.data, 'workout data')
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//get all calories burnt
+export const getAllCaloriesBurnt = async ({email}:{email:string}) => {
+    const url =   `http://192.168.2.76:8080/api/workouts/calburn`
+    try {
+        const options = {
+            method: 'POST',
+            url: url,
+            data: {email: email}
+        }
+        const response = await axios.request(options)
+        return response.data
+    } catch (error) {
+        console.log(error)
+    }
+}

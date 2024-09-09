@@ -25,13 +25,11 @@ const FitScreen = () => {
   const {loggedemail} = useContext(FitnessContext)
   const sendData = async () => {
     const res = await createWorkout({email:loggedemail,numberofsets:totalSets,duration:totalMinutes})
-    console.log(res)
     return res
   }
 
   const sentCaloriesBurnt = async () => {
     const res = await createCaloriesBurnt({email:loggedemail,calories:burntCalories})
-    console.log(res)
     return res
   }
 
@@ -75,8 +73,7 @@ const FitScreen = () => {
           const data = sendData()
           const calDate = sentCaloriesBurnt()
           if (data !== undefined && calDate !== undefined){
-            console.log('data stored')
-          //clear calories and minutes and call backend to store the data
+           
           router.push({
             pathname:'/workout',
             params:{id:id, name:name}

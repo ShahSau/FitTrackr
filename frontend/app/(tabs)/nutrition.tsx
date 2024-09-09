@@ -51,7 +51,7 @@ const Nutrition = () => {
     }
     if (nutrition !== undefined && meals !== undefined) {
       setIsLoading(false)
-      console.log(meals)
+     
     }
 
     fetchNutrition()
