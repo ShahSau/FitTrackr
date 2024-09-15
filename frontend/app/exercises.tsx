@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, StatusBar, Image, Platform, TouchableOpacity, SafeAreaView } from 'react-native'
+import { StyleSheet, Text, View, StatusBar, Image, TouchableOpacity, SafeAreaView } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import {useLocalSearchParams, useRouter} from 'expo-router'
 import {getExercisesByBodyPart} from './api/ererciseDB'

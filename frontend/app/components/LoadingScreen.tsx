@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, StyleSheet, Animated,ActivityIndicator } from 'react-native';
+import { View, StyleSheet,ActivityIndicator } from 'react-native';
 
 
 const LoadingScreen = () => {

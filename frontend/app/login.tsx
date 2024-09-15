@@ -1,5 +1,5 @@
 import { StyleSheet,View, Text, TextInput, TouchableOpacity, Image , Button } from 'react-native'
-import React, {useEffect, useState, useContext} from 'react'
+import React, { useState, useContext} from 'react'
 import { StatusBar } from 'expo-status-bar';
 import { LinearGradient } from 'expo-linear-gradient';
 import Animated,{ SlideInLeft, SlideInRight } from 'react-native-reanimated';
@@ -47,7 +47,7 @@ const Login = () => {
             className='mb-4'
         >
           <TextInput
-            placeholder="Email"
+            placeholder={email}
             className='border border-gray-300 rounded-lg p-3 text-rose-500'
             placeholderTextColor={'#F43F5E'}
             onChange={text => setEmail(text.nativeEvent.text)}
@@ -60,7 +60,7 @@ const Login = () => {
             className='mb-4'
         >
           <TextInput
-            placeholder="Password"
+            placeholder={password}
             className='border border-gray-300 rounded-lg p-3 text-rose-500'
             secureTextEntry={true}
             placeholderTextColor={'#F43F5E'}

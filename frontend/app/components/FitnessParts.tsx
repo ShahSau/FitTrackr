@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, Text, View, Pressable, Image } from 'react-native'
+import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, {useEffect, useState} from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { useRouter } from 'expo-router';
