@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "frontend",
-    "slug": "fittrackr-fitness",
+    "slug": "fittrackr-fitness-xbfdpwr4ajdqpcimz9iht",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -13,13 +13,15 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.shahsau.fittrackrfitnessxbfdpwr4ajdqpcimz9iht"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.shahsau.fittrackrfitnessxbfdpwr4ajdqpcimz9iht"
     },
     "web": {
       "bundler": "metro",
@@ -37,7 +39,7 @@
         "origin": false
       },
       "eas": {
-        "projectId": "08832e2b-3c3f-4c52-b0dd-eb6ee97c040f"
+        "projectId": "565f15fa-79c3-4ff6-8e3b-2b0eebbae44c"
       }
     },
     "owner": "shahsau",
@@ -45,7 +47,7 @@
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/08832e2b-3c3f-4c52-b0dd-eb6ee97c040f"
+      "url": "https://u.expo.dev/565f15fa-79c3-4ff6-8e3b-2b0eebbae44c"
     }
   }
 }

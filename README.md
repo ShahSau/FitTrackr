@@ -36,6 +36,7 @@
 
 > - [📍 Overview](#📍-overview)
 > - [📦 Features](#📦-features)
+> - [📸  Screenshots](#📸-screenshots)
 > - [📂 Repository Structure](#📂-repository-structure)
 > - [🚀 Getting Started](#🚀-getting-started)
 >   - [⚙️ Installation](#⚙️-installation)
@@ -64,6 +65,59 @@ FitTrackr is a mobile application built using React Native, aimed at helping use
 - User Authentication: Secure signup and login system, ensuring that user data remains private and accessible only to them.
 
 - Cross-Platform Support: Built using React Native, FitTrackr works seamlessly on both Android and iOS devices.
+
+---
+## 📸 Screenshots
+Take a look at some screenshots of FitTrackr in action: <br/>
+🔒 Login & Signup <br/>
+<img src="./frontend/assets/images/screenshots/login.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+<img src="./frontend/assets/images/screenshots/register.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+
+🏋️ Workout Log <br/>
+<img src="./frontend/assets/images/screenshots/home.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+<img src="./frontend/assets/images/screenshots/target.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+<img src="./frontend/assets/images/screenshots/exerciseS.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px" 
+/>
+<img src="./frontend/assets/images/screenshots/Sexercisessss.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+<img src="./frontend/assets/images/screenshots/single_exer.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+
+📊 Progress Tracking <br/>
+<img src="./frontend/assets/images/screenshots/nutrition.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+<img src="./frontend/assets/images/screenshots/start_exer.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+<img src="./frontend/assets/images/screenshots/today's_workout.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
+<img src="./frontend/assets/images/screenshots/profile.jpg"
+    alt="Markdown Monster icon"
+    style="width:90px"
+/>
 
 ---
 
